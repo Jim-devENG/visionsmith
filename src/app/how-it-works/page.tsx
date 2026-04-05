@@ -113,8 +113,8 @@ export default function HowItWorksPage() {
       <section className="relative pt-32 pb-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&q=80"
-            alt="Nature landscape"
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32a4c?w=1920&q=80"
+            alt="Mountain landscape"
             fill
             className="object-cover"
             priority
@@ -414,7 +414,7 @@ export default function HowItWorksPage() {
             <p className="text-lg text-primary-100 max-w-xl mx-auto mb-8">
               Join thousands who have already started their journey. Your future self will thank you.
             </p>
-            <Button variant="secondary" size="xl" className="group bg-white text-primary-600 hover:bg-primary-50">
+            <Button variant="outline" size="xl" className="group bg-white text-primary-600 hover:bg-primary-50">
               Get Started Free
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Button>

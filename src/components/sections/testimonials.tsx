@@ -15,21 +15,21 @@ const testimonials = [
     author: "Sarah Chen",
     role: "Founder & CEO, Luminary Labs",
     avatar: "SC",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b593a4?w=200&q=80",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b593a4?w=200&h=200&fit=crop&q=80",
   },
   {
     quote: "I've tried every productivity system out there. This is different. It's not about hacks—it's about architecture. In 6 months, I've accomplished more than the previous 2 years combined.",
     author: "Marcus Williams",
     role: "Software Engineer, Former Google",
     avatar: "MW",
-    image: "https://images.unsplash.com/photo-1507003211169-0a6dd7228fbb?w=200&q=80",
+    image: "https://images.unsplash.com/photo-1507003211169-0a6dd7228fbb?w=200&h=200&fit=crop&q=80",
   },
   {
     quote: "The clarity I've gained is invaluable. VisionSmith helped me see that I wasn't lacking motivation—I was lacking structure. Now I have both, and the results speak for themselves.",
     author: "Elena Rodriguez",
     role: "Partner, McKinsey & Company",
     avatar: "ER",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d35?w=200&q=80",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d35?w=200&h=200&fit=crop&q=80",
   },
 ];
 
