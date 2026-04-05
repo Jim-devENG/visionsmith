@@ -15,8 +15,8 @@ export function CTASection() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1518837695000-672f9b68445a?w=1920&q=80"
-          alt="Person looking at horizon"
+          src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920&q=80"
+          alt="Mountain peaks at dawn"
           fill
           className="object-cover"
         />

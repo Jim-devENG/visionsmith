@@ -84,8 +84,8 @@ export default function FeaturesPage() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1507238691747-381b3b96a8e0?w=1920&q=80"
-            alt="Person working on laptop"
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32a4c?w=1920&q=80"
+            alt="Mountain landscape"
             fill
             className="object-cover"
             priority
