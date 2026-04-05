@@ -14,18 +14,21 @@ const testimonials = [
     author: "Sarah Chen",
     role: "Founder & CEO, Luminary Labs",
     avatar: "SC",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b593a4?w=200&q=80",
   },
   {
     quote: "I've tried every productivity system out there. This is different. It's not about hacks—it's about architecture. In 6 months, I've accomplished more than the previous 2 years combined.",
     author: "Marcus Williams",
     role: "Software Engineer, Former Google",
     avatar: "MW",
+    image: "https://images.unsplash.com/photo-1507003211169-0a6dd7228fbb?w=200&q=80",
   },
   {
     quote: "The clarity I've gained is invaluable. VisionSmith helped me see that I wasn't lacking motivation—I was lacking structure. Now I have both, and the results speak for themselves.",
     author: "Elena Rodriguez",
     role: "Partner, McKinsey & Company",
     avatar: "ER",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d35?w=200&q=80",
   },
 ];
 
@@ -84,6 +87,9 @@ export function TestimonialsSection() {
             <FadeIn key={testimonial.author} delay={index * 0.15}>
               <motion.div
                 className="h-full bg-white rounded-2xl p-8 shadow-lg border border-neutral-200 relative"
+                style={{
+                  boxShadow: "0 4px 6px -1px rgba(102, 0, 7, 0.03), 0 10px 20px -5px rgba(102, 0, 7, 0.05)",
+                }}
                 whileHover={{ y: -4 }}
               >
                 <Quote className="w-8 h-8 text-primary-200 mb-4" />
@@ -91,8 +97,13 @@ export function TestimonialsSection() {
                   "{testimonial.quote}"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white font-semibold">
-                    {testimonial.avatar}
+                  <div className="relative">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.author}
+                      className="w-12 h-12 rounded-full object-cover border-2 border-primary-100"
+                    />
+                    <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-primary-500 border-2 border-white" />
                   </div>
                   <div>
                     <div className="font-semibold text-neutral-900">

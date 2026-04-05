@@ -10,13 +10,22 @@ import { FadeIn, AnimatedGroup, AnimatedItem } from "@/components/ui/animated";
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1920&q=80"
+          alt="Mountain peaks at dawn"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/70 to-white/90" />
+      </div>
+      
       {/* Background Effects */}
-      <div className="absolute inset-0 mesh-bg opacity-70" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/50" />
+      <div className="absolute inset-0 mesh-bg opacity-50 z-[1]" />
       
       {/* Floating Orbs */}
       <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-300/20 rounded-full blur-3xl"
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-300/20 rounded-full blur-3xl z-[2]"
         animate={{
           x: [0, 50, 0],
           y: [0, -30, 0],
@@ -29,7 +38,7 @@ export function HeroSection() {
         }}
       />
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary-400/15 rounded-full blur-3xl"
+        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary-400/15 rounded-full blur-3xl z-[2]"
         animate={{
           x: [0, -40, 0],
           y: [0, 40, 0],
@@ -42,7 +51,7 @@ export function HeroSection() {
         }}
       />
       <motion.div
-        className="absolute top-1/2 right-1/3 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl"
+        className="absolute top-1/2 right-1/3 w-64 h-64 bg-primary-500/10 rounded-full blur-3xl z-[2]"
         animate={{
           x: [0, 30, 0],
           y: [0, -20, 0],

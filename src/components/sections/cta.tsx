@@ -11,9 +11,18 @@ import { FadeIn } from "@/components/ui/animated";
 export function CTASection() {
   return (
     <Section padding="xl" className="relative overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1518837695000-672f9b68445a?w=1920&q=80"
+          alt="Person looking at horizon"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-50/95 via-white/90 to-primary-100/95" />
+      </div>
+      
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-primary-100/50" />
-      <div className="absolute inset-0 mesh-bg opacity-50" />
+      <div className="absolute inset-0 mesh-bg opacity-30 z-[1]" />
       
       {/* Floating Elements */}
       <motion.div

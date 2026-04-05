@@ -14,30 +14,35 @@ const features = [
     title: "Crystal Clear Vision",
     description: "Define what truly matters. Cut through noise, distractions, and half-hearted goals to find your true north.",
     color: "primary-600",
+    image: "https://images.unsplash.com/photo-1507003211169-0a6dd7228fbb?w=800&q=80",
   },
   {
     icon: Compass,
     title: "Strategic Direction",
     description: "Every step mapped with intention. No wandering, no wasted effort—only deliberate progress toward your vision.",
     color: "primary-500",
+    image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80",
   },
   {
     icon: Zap,
     title: "Disciplined Execution",
     description: "Turn plans into reality through structured daily practices. Build momentum that compounds into transformation.",
     color: "primary-700",
+    image: "https://images.unsplash.com/photo-1532217109896-5f3c1c8b5c1d?w=800&q=80",
   },
   {
     icon: Shield,
     title: "Resilient Mindset",
     description: "Develop the mental frameworks to stay the course when motivation fades and obstacles arise.",
     color: "primary-600",
+    image: "https://images.unsplash.com/photo-1509901872298-d8c1ec572c63?w=800&q=80",
   },
   {
     icon: Layers,
     title: "Integrated Systems",
     description: "Connect every area of your life—health, wealth, relationships, growth—into one cohesive architecture.",
     color: "primary-500",
+    image: "https://images.unsplash.com/photo-1484480974693-6ca904c51c2a?w=800&q=80",
   },
 ];
 
@@ -72,7 +77,7 @@ export function FeaturesSection() {
             {features.slice(0, 2).map((feature, index) => (
               <FadeIn key={feature.title} delay={index * 0.1}>
                 <motion.div
-                  className="group relative bg-white rounded-3xl p-8 md:p-10 border border-neutral-100"
+                  className="group relative bg-white rounded-3xl overflow-hidden border border-neutral-100"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -85,39 +90,39 @@ export function FeaturesSection() {
                     boxShadow: "0 4px 6px -1px rgba(102, 0, 7, 0.05), 0 10px 20px -5px rgba(102, 0, 7, 0.08), 0 25px 50px -12px rgba(102, 0, 7, 0.1)",
                   }}
                 >
-                  {/* Accent Line */}
-                  <div className={cn(
-                    "absolute top-0 left-8 right-8 h-1 rounded-full bg-gradient-to-r from-transparent via-primary-600 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  )} />
-                  
-                  {/* Icon Container */}
-                  <div className="relative mb-6">
-                    <div className={cn(
-                      "w-16 h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100 border border-primary-200/50"
-                    )}>
-                      <feature.icon className={cn("w-8 h-8", `text-${feature.color}`)} style={{ color: `var(--${feature.color})` }} />
+                  {/* Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={feature.image}
+                      alt={feature.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
+                    {/* Icon overlay */}
+                    <div className="absolute bottom-4 left-6">
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm border border-primary-100 shadow-lg">
+                        <feature.icon className="w-6 h-6 text-primary-600" />
+                      </div>
                     </div>
-                    {/* Decorative dot */}
-                    <div className={cn(
-                      "absolute -top-1 -right-1 w-3 h-3 rounded-full",
-                      `bg-${feature.color}`
-                    )} style={{ backgroundColor: `var(--${feature.color})` }} />
                   </div>
+                  
+                  {/* Content */}
+                  <div className="p-6 md:p-8">
+                    <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-neutral-600 leading-relaxed text-base md:text-lg">
+                      {feature.description}
+                    </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-neutral-600 leading-relaxed text-base md:text-lg">
-                    {feature.description}
-                  </p>
-
-                  {/* Bottom accent */}
-                  <div className="mt-6 pt-6 border-t border-neutral-100 flex items-center justify-between">
-                    <span className="text-sm font-medium text-primary-600">0{index + 1}</span>
-                    <div className="w-8 h-8 rounded-full bg-neutral-50 flex items-center justify-center group-hover:bg-primary-50 transition-colors">
-                      <svg className="w-4 h-4 text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                    {/* Bottom accent */}
+                    <div className="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between">
+                      <span className="text-sm font-medium text-primary-600">0{index + 1}</span>
+                      <div className="w-8 h-8 rounded-full bg-neutral-50 flex items-center justify-center group-hover:bg-primary-50 transition-colors">
+                        <svg className="w-4 h-4 text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -131,7 +136,7 @@ export function FeaturesSection() {
               <FadeIn key={feature.title} delay={(index + 2) * 0.1}>
                 <motion.div
                   className={cn(
-                    "group relative bg-white rounded-3xl p-8 md:p-10 border border-neutral-100",
+                    "group relative bg-white rounded-3xl overflow-hidden border border-neutral-100",
                     index === 1 && "md:-mt-8"
                   )}
                   initial={{ opacity: 0, y: 30 }}
@@ -146,39 +151,39 @@ export function FeaturesSection() {
                     boxShadow: "0 4px 6px -1px rgba(102, 0, 7, 0.05), 0 10px 20px -5px rgba(102, 0, 7, 0.08), 0 25px 50px -12px rgba(102, 0, 7, 0.1)",
                   }}
                 >
-                  {/* Accent Line */}
-                  <div className={cn(
-                    "absolute top-0 left-8 right-8 h-1 rounded-full bg-gradient-to-r from-transparent via-primary-600 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  )} />
-                  
-                  {/* Icon Container */}
-                  <div className="relative mb-6">
-                    <div className={cn(
-                      "w-16 h-16 rounded-2xl flex items-center justify-center bg-gradient-to-br from-primary-50 to-primary-100 border border-primary-200/50"
-                    )}>
-                      <feature.icon className={cn("w-8 h-8", `text-${feature.color}`)} style={{ color: `var(--${feature.color})` }} />
+                  {/* Image */}
+                  <div className="relative h-40 overflow-hidden">
+                    <img
+                      src={feature.image}
+                      alt={feature.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
+                    {/* Icon overlay */}
+                    <div className="absolute bottom-4 left-6">
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm border border-primary-100 shadow-lg">
+                        <feature.icon className="w-5 h-5 text-primary-600" />
+                      </div>
                     </div>
-                    {/* Decorative dot */}
-                    <div className={cn(
-                      "absolute -top-1 -right-1 w-3 h-3 rounded-full",
-                      `bg-${feature.color}`
-                    )} style={{ backgroundColor: `var(--${feature.color})` }} />
                   </div>
+                  
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-lg md:text-xl font-semibold tracking-tight text-neutral-900 mb-2 group-hover:text-primary-600 transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-neutral-600 leading-relaxed text-sm md:text-base">
+                      {feature.description}
+                    </p>
 
-                  <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-neutral-900 mb-3 group-hover:text-primary-600 transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-neutral-600 leading-relaxed text-base md:text-lg">
-                    {feature.description}
-                  </p>
-
-                  {/* Bottom accent */}
-                  <div className="mt-6 pt-6 border-t border-neutral-100 flex items-center justify-between">
-                    <span className="text-sm font-medium text-primary-600">0{index + 3}</span>
-                    <div className="w-8 h-8 rounded-full bg-neutral-50 flex items-center justify-center group-hover:bg-primary-50 transition-colors">
-                      <svg className="w-4 h-4 text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                    {/* Bottom accent */}
+                    <div className="mt-4 pt-4 border-t border-neutral-100 flex items-center justify-between">
+                      <span className="text-sm font-medium text-primary-600">0{index + 3}</span>
+                      <div className="w-8 h-8 rounded-full bg-neutral-50 flex items-center justify-center group-hover:bg-primary-50 transition-colors">
+                        <svg className="w-4 h-4 text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
                     </div>
                   </div>
                 </motion.div>

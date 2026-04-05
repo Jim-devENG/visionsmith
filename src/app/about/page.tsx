@@ -66,7 +66,14 @@ export default function AboutPage() {
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-white" />
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80"
+            alt="Team collaboration"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-50/90 via-white/85 to-white/95" />
+        </div>
         <Container size="lg" className="relative z-10">
           <AnimatedGroup stagger={0.1} className="text-center max-w-3xl mx-auto">
             <AnimatedItem>

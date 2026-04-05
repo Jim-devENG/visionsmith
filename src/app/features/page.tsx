@@ -81,7 +81,14 @@ export default function FeaturesPage() {
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-white" />
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1507238691747-381b3b96a8e0?w=1920&q=80"
+            alt="Person working on laptop"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-50/90 via-white/85 to-white/95" />
+        </div>
         <Container size="lg" className="relative z-10">
           <AnimatedGroup stagger={0.1} className="text-center max-w-3xl mx-auto">
             <AnimatedItem>

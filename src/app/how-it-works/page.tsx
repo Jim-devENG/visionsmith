@@ -88,7 +88,14 @@ export default function HowItWorksPage() {
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-white" />
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1484101407027-3daa736c6e8f?w=1920&q=80"
+            alt="Person climbing mountain"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-50/90 via-white/85 to-white/95" />
+        </div>
         <Container size="lg" className="relative z-10">
           <AnimatedGroup stagger={0.1} className="text-center max-w-3xl mx-auto">
             <AnimatedItem>
