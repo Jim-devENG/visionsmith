@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Target, Compass, Zap, Shield, Layers } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -92,14 +93,15 @@ export function FeaturesSection() {
                 >
                   {/* Image */}
                   <div className="relative h-48 overflow-hidden">
-                    <img
+                    <Image
                       src={feature.image}
                       alt={feature.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
                     {/* Icon overlay */}
-                    <div className="absolute bottom-4 left-6">
+                    <div className="absolute bottom-4 left-6 z-10">
                       <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm border border-primary-100 shadow-lg">
                         <feature.icon className="w-6 h-6 text-primary-600" />
                       </div>
@@ -153,14 +155,15 @@ export function FeaturesSection() {
                 >
                   {/* Image */}
                   <div className="relative h-40 overflow-hidden">
-                    <img
+                    <Image
                       src={feature.image}
                       alt={feature.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
                     {/* Icon overlay */}
-                    <div className="absolute bottom-4 left-6">
+                    <div className="absolute bottom-4 left-6 z-10">
                       <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-white/90 backdrop-blur-sm border border-primary-100 shadow-lg">
                         <feature.icon className="w-5 h-5 text-primary-600" />
                       </div>

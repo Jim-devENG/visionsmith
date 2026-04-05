@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Quote } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -98,10 +99,12 @@ export function TestimonialsSection() {
                 </p>
                 <div className="flex items-center gap-4">
                   <div className="relative">
-                    <img
+                    <Image
                       src={testimonial.image}
                       alt={testimonial.author}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-primary-100"
+                      width={48}
+                      height={48}
+                      className="rounded-full object-cover border-2 border-primary-100"
                     />
                     <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-primary-500 border-2 border-white" />
                   </div>
