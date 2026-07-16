@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Parallax } from "../../../../components/ui/Parallax";
 import { Reveal } from "../../../../components/ui/Reveal";
+import { Stamp } from "../../../../components/ui/Stamp";
 
 export default function JoinEnteredPage() {
   return (
@@ -28,15 +28,15 @@ export default function JoinEnteredPage() {
               </h2>
             </div>
 
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div className="vs-card">
+            <div className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
+              <div className="border-t border-[color:var(--vs-line-strong)] pt-6">
                 <p className="vs-label vs-label-alt mb-3">Meaning</p>
                 <p className="vs-copy">
                   Joining is platform entry. Event registration is session
                   participation inside that broader entry.
                 </p>
               </div>
-              <div className="vs-card">
+              <div className="border-t border-[color:var(--vs-line-strong)] pt-6">
                 <p className="vs-label vs-label-alt mb-3">Expectation</p>
                 <p className="vs-copy">
                   Work in rhythm: review, correction, and follow-through that
@@ -54,28 +54,20 @@ export default function JoinEnteredPage() {
             <div className="max-w-[22rem]">
               <p className="vs-label vs-label-on-dark mb-6">First step after entry</p>
               <h2 className="vs-title">Complete this within 24 hours.</h2>
-              <Parallax strength={12} className="mt-10 max-w-[20rem]">
-                <figure className="vs-media">
-                  <img
-                    src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=920&q=80"
-                    alt="Notebook open on a quiet desk"
-                    loading="lazy"
-                  />
-                </figure>
-              </Parallax>
+              <Stamp label="Recorded" />
             </div>
 
             <div className="space-y-6">
               <p className="vs-copy max-w-[38rem]">
                 Write a short internal audit in plain text:
               </p>
-              <div className="grid gap-4">
+              <div className="space-y-5">
                 {[
                   "The one standard you refuse to negotiate this week.",
                   "The one recurring behavior that currently violates it.",
                   "The one concrete correction you will apply before the next session.",
                 ].map((item, index) => (
-                  <div key={item} className="vs-card vs-card-on-dark flex gap-4">
+                  <div key={item} className="flex gap-4 border-t border-white/15 pt-5">
                     <span className="vs-label vs-label-on-dark shrink-0">0{index + 1}</span>
                     <p className="vs-copy">{item}</p>
                   </div>

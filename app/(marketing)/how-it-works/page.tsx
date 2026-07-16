@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Checklist } from "../../../components/ui/Checklist";
 import { Reveal } from "../../../components/ui/Reveal";
 
 const progression = [
@@ -95,15 +96,17 @@ export default function HowItWorksPage() {
             </p>
           </Reveal>
 
-          <Reveal delay={150} className="mt-12 grid gap-6 sm:grid-cols-2">
-            {progression.map((step) => (
-              <div key={step.label} className="vs-card">
-                <span className="vs-label vs-label-alt">{step.label}</span>
-                <h3 className="vs-subtitle mt-4">{step.title}</h3>
-                <p className="vs-copy mt-3">{step.text}</p>
-              </div>
+          <div className="relative mt-12 max-w-[42rem] space-y-10 border-l border-[color:var(--vs-line-strong)] pl-8">
+            {progression.map((step, index) => (
+              <Reveal key={step.label} delay={index * 100} className="relative">
+                <span className="absolute -left-[2.55rem] top-0 flex h-8 w-8 items-center justify-center rounded-full bg-[color:var(--vs-surface)] text-[12px] font-bold text-[color:var(--vs-accent-strong)] ring-4 ring-[color:var(--vs-accent-soft)]">
+                  {step.label}
+                </span>
+                <h3 className="vs-subtitle">{step.title}</h3>
+                <p className="vs-copy mt-3 max-w-[36rem]">{step.text}</p>
+              </Reveal>
             ))}
-          </Reveal>
+          </div>
         </div>
       </section>
 
@@ -116,12 +119,12 @@ export default function HowItWorksPage() {
                 A practical frame, not a vague philosophy.
               </h2>
             </div>
-            <div className="grid gap-5 md:grid-cols-2">
-              {sequence.map((item) => (
-                <article key={item.title} className="vs-card vs-card-on-dark">
+            <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+              {sequence.map((item, index) => (
+                <Reveal key={item.title} delay={index * 90} className="border-t border-white/10 pt-6">
                   <h3 className="vs-subtitle">{item.title}</h3>
                   <p className="vs-copy mt-3">{item.text}</p>
-                </article>
+                </Reveal>
               ))}
             </div>
           </Reveal>
@@ -137,14 +140,9 @@ export default function HowItWorksPage() {
               the quantity of output.
             </h2>
           </Reveal>
-          <Reveal delay={150} className="mt-12 grid gap-6 sm:grid-cols-2">
-            {effects.map((effect, index) => (
-              <div key={effect} className="vs-card">
-                <span className="vs-label vs-label-alt">0{index + 1}</span>
-                <p className="vs-copy mt-4">{effect}</p>
-              </div>
-            ))}
-          </Reveal>
+          <div className="mt-12 max-w-[42rem]">
+            <Checklist items={effects} />
+          </div>
         </div>
       </section>
 

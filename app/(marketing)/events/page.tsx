@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
-import { Parallax } from "../../../components/ui/Parallax";
+import { motion } from "framer-motion";
+import { EventTicket } from "../../../components/ui/EventTicket";
 import { Reveal } from "../../../components/ui/Reveal";
 
 const nextEvent = {
@@ -70,34 +73,13 @@ export default function EventsPage() {
                 <p className="vs-label vs-label-alt mb-5">Next live session</p>
                 <h2 className="vs-title max-w-[36rem]">{nextEvent.title}</h2>
                 <p className="vs-copy mt-6 max-w-[38rem]">{nextEvent.framing}</p>
-                <Parallax strength={14} className="mt-8 max-w-[38rem]">
-                  <figure className="vs-media">
-                    <img
-                      src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1100&q=80"
-                      alt="Focused live discussion setting"
-                      loading="lazy"
-                    />
-                  </figure>
-                </Parallax>
+                <p className="vs-copy mt-6 max-w-[38rem]">
+                  To meet the work while it is active, once your entry into the
+                  platform has been established.
+                </p>
               </div>
               <aside className="space-y-6">
-                <dl className="space-y-5 text-sm text-[color:var(--vs-muted)]">
-                  <div>
-                    <dt className="vs-label vs-label-alt">Date</dt>
-                    <dd className="mt-3">{nextEvent.date}</dd>
-                  </div>
-                  <div>
-                    <dt className="vs-label vs-label-alt">Time</dt>
-                    <dd className="mt-3">{nextEvent.time}</dd>
-                  </div>
-                  <div>
-                    <dt className="vs-label vs-label-alt">Why attend</dt>
-                    <dd className="mt-3 leading-7">
-                      To meet the work while it is active, once your entry into
-                      the platform has been established.
-                    </dd>
-                  </div>
-                </dl>
+                <EventTicket day="16" month="May" time={nextEvent.time} />
                 <Link href={nextEvent.actionHref} className="vs-btn w-full">
                   {nextEvent.actionLabel}
                 </Link>
@@ -141,14 +123,21 @@ export default function EventsPage() {
               The cadence is steady enough to shape expectation.
             </h2>
           </Reveal>
-          <Reveal delay={150} className="mt-12 grid gap-6 md:grid-cols-3">
-            {rhythm.map((item) => (
-              <article key={item.title} className="vs-card">
-                <h3 className="vs-subtitle">{item.title}</h3>
-                <p className="vs-copy mt-4">{item.text}</p>
-              </article>
+          <div className="mt-12 flex flex-col md:flex-row md:items-start">
+            {rhythm.map((item, index) => (
+              <div key={item.title} className="flex flex-1 items-start">
+                <Reveal delay={index * 100} className="flex-1 md:pr-8">
+                  <h3 className="vs-subtitle">{item.title}</h3>
+                  <p className="vs-copy mt-3">{item.text}</p>
+                </Reveal>
+                {index < rhythm.length - 1 ? (
+                  <span className="hidden pt-1 text-2xl text-[color:var(--vs-line-strong)] md:block">
+                    &#8594;
+                  </span>
+                ) : null}
+              </div>
             ))}
-          </Reveal>
+          </div>
         </div>
       </section>
 
@@ -158,13 +147,23 @@ export default function EventsPage() {
             <div>
               <p className="vs-label vs-label-on-accent mb-6">Continuity</p>
               <h2 className="vs-title max-w-[35rem]">The work has already been moving.</h2>
-              <div className="mt-10 grid gap-4 sm:grid-cols-3 max-w-[40rem]">
-                {pastSessions.map((session) => (
-                  <div key={session} className="vs-card vs-card-on-accent">
+              <ul className="mt-10 max-w-[40rem] space-y-4">
+                {pastSessions.map((session, index) => (
+                  <motion.li
+                    key={session}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex items-center gap-3 border-t border-white/15 pt-4"
+                  >
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/15 text-[10px] font-bold">
+                      &#10003;
+                    </span>
                     <p className="vs-copy text-[0.9rem]">{session}</p>
-                  </div>
+                  </motion.li>
                 ))}
-              </div>
+              </ul>
             </div>
             <div className="space-y-6 self-end">
               <p className="vs-meta max-w-[17rem]">

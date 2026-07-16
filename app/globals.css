@@ -489,7 +489,11 @@ label {
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--vs-muted);
+}
+
+.vs-section-dark .vs-stat-label {
+  color: rgba(255, 255, 255, 0.56);
 }
 
 /* Sticky header glass */
@@ -498,6 +502,50 @@ label {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--vs-line);
+}
+
+/* Marquee ticker */
+.vs-marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+
+.vs-marquee-track {
+  display: inline-flex;
+  width: max-content;
+  animation: vs-marquee-scroll 26s linear infinite;
+}
+
+.vs-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: 1.5rem;
+  font-size: clamp(1.5rem, 4.2vw, 3.25rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.vs-marquee-item::after {
+  content: '\2014';
+  margin-left: 1.5rem;
+  opacity: 0.35;
+}
+
+@keyframes vs-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vs-marquee-track {
+    animation: none;
+  }
 }
 
 /* Scroll reveal */

@@ -1,5 +1,6 @@
-import { Parallax } from "../../../components/ui/Parallax";
+import { Checklist } from "../../../components/ui/Checklist";
 import { Reveal } from "../../../components/ui/Reveal";
+import { Stamp } from "../../../components/ui/Stamp";
 import { submitParticipantEntry } from "./actions";
 
 type JoinPageProps = {
@@ -36,30 +37,30 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
             </h2>
           </Reveal>
 
-          <Reveal delay={150} className="mt-12 grid gap-6 md:grid-cols-3">
-            <div className="vs-card">
+          <div className="mt-12 grid gap-x-10 gap-y-8 md:grid-cols-3">
+            <Reveal className="border-t border-[color:var(--vs-line-strong)] pt-6">
               <p className="vs-label vs-label-alt mb-3">Expectation</p>
               <p className="vs-copy">
                 You are expected to approach the work honestly, to name things
                 plainly, and to let structure challenge convenience.
               </p>
-            </div>
-            <div className="vs-card">
+            </Reveal>
+            <Reveal delay={100} className="border-t border-[color:var(--vs-line-strong)] pt-6">
               <p className="vs-label vs-label-alt mb-3">Engagement</p>
               <p className="vs-copy">
                 Participation is active. The value comes from returning,
                 reviewing, correcting, and keeping your own record in view.
               </p>
-            </div>
-            <div className="vs-card">
+            </Reveal>
+            <Reveal delay={200} className="border-t border-[color:var(--vs-line-strong)] pt-6">
               <p className="vs-label vs-label-alt mb-3">Environment</p>
               <p className="vs-copy">
                 The space is quieter than most online environments and less
                 interested in performance. It is built for sustained
                 responsibility.
               </p>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -72,19 +73,16 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
             </h2>
           </Reveal>
 
-          <Reveal delay={150} className="mt-12 grid gap-5 sm:grid-cols-2">
-            {[
-              "Clearer decisions because standards and obligations are made explicit.",
-              "Stronger structure because review and correction have a defined place.",
-              "Greater consistency because commitments stay visible in one environment.",
-              "A serious atmosphere where discipline is treated as ordinary practice.",
-            ].map((item, index) => (
-              <div key={item} className="vs-card vs-card-on-dark">
-                <span className="vs-label vs-label-on-dark">0{index + 1}</span>
-                <p className="vs-copy mt-4">{item}</p>
-              </div>
-            ))}
-          </Reveal>
+          <div className="mt-12 max-w-[42rem]">
+            <Checklist
+              items={[
+                "Clearer decisions because standards and obligations are made explicit.",
+                "Stronger structure because review and correction have a defined place.",
+                "Greater consistency because commitments stay visible in one environment.",
+                "A serious atmosphere where discipline is treated as ordinary practice.",
+              ]}
+            />
+          </div>
         </div>
       </section>
 
@@ -100,15 +98,7 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
                 Event participation follows this same entry path. Join once,
                 then move inside the platform rhythm.
               </p>
-              <Parallax strength={12} className="mt-10 max-w-[20rem]">
-                <figure className="vs-media">
-                  <img
-                    src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&w=920&q=80"
-                    alt="Journal and writing tools prepared for reflection"
-                    loading="lazy"
-                  />
-                </figure>
-              </Parallax>
+              <Stamp label="Entry recorded" />
             </div>
 
             <form

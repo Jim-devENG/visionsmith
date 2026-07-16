@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Parallax } from "../../../components/ui/Parallax";
+import { FrameRings } from "../../../components/ui/FrameRings";
 import { Reveal } from "../../../components/ui/Reveal";
+import { StrikeList } from "../../../components/ui/StrikeList";
 
 const refusals = [
   "It is not a place to accumulate better language without changing conduct.",
@@ -50,17 +51,9 @@ export default function AboutPage() {
             </div>
 
             <div className="vs-card">
-              <p className="vs-label vs-label-alt mb-5">Plainly stated</p>
-              <Parallax strength={12}>
-                <figure className="vs-media">
-                  <img
-                    src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=760&q=80"
-                    alt="Quiet architectural lines expressing structure and order"
-                    loading="lazy"
-                  />
-                </figure>
-              </Parallax>
-              <p className="vs-meta mt-5">
+              <p className="vs-label vs-label-alt mb-2">Plainly stated</p>
+              <FrameRings />
+              <p className="vs-meta mt-2 text-center">
                 This is not a platform for intensity. It is a platform for
                 ordered responsibility.
               </p>
@@ -98,14 +91,7 @@ export default function AboutPage() {
                 The platform is defined as much by refusal as by method.
               </h2>
             </div>
-            <div className="grid gap-5 sm:grid-cols-3">
-              {refusals.map((item, index) => (
-                <div key={item} className="vs-card vs-card-on-dark">
-                  <span className="vs-label vs-label-on-dark">0{index + 1}</span>
-                  <p className="vs-copy mt-4">{item}</p>
-                </div>
-              ))}
-            </div>
+            <StrikeList items={refusals} />
           </Reveal>
         </div>
       </section>
@@ -119,14 +105,17 @@ export default function AboutPage() {
               visible enough to withstand pressure.
             </h2>
           </Reveal>
-          <Reveal delay={150} className="mt-12 grid gap-6 md:grid-cols-3">
-            {standards.map((item) => (
-              <article key={item.title} className="vs-card">
+          <div className="relative mt-12 max-w-[40rem] space-y-10 border-l border-[color:var(--vs-line-strong)] pl-8">
+            {standards.map((item, index) => (
+              <Reveal key={item.title} delay={index * 120} className="relative">
+                <span className="absolute -left-[2.55rem] top-0 flex h-8 w-8 items-center justify-center rounded-full bg-[color:var(--vs-surface)] text-[12px] font-bold text-[color:var(--vs-accent-strong)] ring-4 ring-[color:var(--vs-accent-soft)]">
+                  0{index + 1}
+                </span>
                 <h3 className="vs-subtitle">{item.title}</h3>
-                <p className="vs-copy mt-4">{item.text}</p>
-              </article>
+                <p className="vs-copy mt-3 max-w-[32rem]">{item.text}</p>
+              </Reveal>
             ))}
-          </Reveal>
+          </div>
         </div>
       </section>
 
