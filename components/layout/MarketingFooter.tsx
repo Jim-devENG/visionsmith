@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const footerLinks = [
@@ -14,9 +15,13 @@ export function MarketingFooter() {
       <div className="vs-wrap py-16">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_minmax(0,0.9fr)]">
           <div className="max-w-[26rem]">
-            <p className="text-[19px] font-extrabold tracking-[-0.01em] text-white">
-              VisionSmith
-            </p>
+            <Image
+              src="/wordicon.png"
+              alt="VisionSmith"
+              width={669}
+              height={373}
+              className="h-7 w-auto"
+            />
             <p className="mt-4 text-[15px] leading-7 text-white/60">
               A governed environment for standards, review, and execution.
             </p>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -24,11 +25,15 @@ export function MarketingHeader() {
   return (
     <header className="sticky top-0 z-30 vs-glass">
       <div className="vs-wrap flex h-[4.5rem] items-center justify-between gap-6">
-        <Link
-          href="/"
-          className="shrink-0 text-[17px] font-extrabold tracking-[-0.02em] text-[color:var(--vs-ink)]"
-        >
-          VisionSmith
+        <Link href="/" className="shrink-0">
+          <Image
+            src="/wordicon.png"
+            alt="VisionSmith"
+            width={669}
+            height={373}
+            priority
+            className="h-8 w-auto"
+          />
         </Link>
 
         <nav aria-label="Primary" className="min-w-0 overflow-x-auto">
