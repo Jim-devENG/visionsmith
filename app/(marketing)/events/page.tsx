@@ -36,7 +36,7 @@ const pastSessions = [
 export default function EventsPage() {
   return (
     <main>
-      <section className="vs-section">
+      <section className="vs-section vs-surface">
         <div className="vs-wrap vs-section-inner-open">
           <Reveal className="grid gap-14 lg:grid-cols-[minmax(0,2.05fr)_minmax(15rem,0.85fr)] lg:items-end">
             <div>
@@ -50,70 +50,68 @@ export default function EventsPage() {
                 correction, and renewed structure happen in real time.
               </p>
             </div>
-            <aside className="vs-rule-top space-y-5 pt-8 lg:border-t-0 lg:border-l lg:border-[color:var(--vs-line)] lg:pl-10 lg:pt-0">
-              <p className="vs-label vs-label-alt">What this page is for</p>
-              <p className="vs-meta max-w-[16rem]">
+            <div className="vs-card">
+              <p className="vs-label vs-label-alt mb-4">What this page is for</p>
+              <p className="vs-meta">
                 This is the current edge of activity. If you want to enter the
                 work as it is happening now, begin with platform entry.
               </p>
-            </aside>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="vs-section vs-surface">
-        <div className="vs-wrap vs-section-inner-tight">
-          <Reveal className="grid gap-10 lg:grid-cols-[minmax(12rem,0.5fr)_minmax(0,1.5fr)] lg:items-start">
-            <p className="vs-label pt-1">Current / next</p>
-            <div className="vs-rule-top pt-8">
-              <div className="grid gap-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(15rem,0.65fr)]">
-                <div>
-                  <p className="vs-label mb-5">Next live session</p>
-                  <h2 className="vs-title max-w-[36rem]">{nextEvent.title}</h2>
-                  <p className="vs-copy mt-8 max-w-[38rem]">{nextEvent.framing}</p>
-                  <Parallax strength={14} className="mt-10 max-w-[38rem]">
-                    <figure className="vs-media">
-                      <img
-                        src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1100&q=80"
-                        alt="Focused live discussion setting"
-                        loading="lazy"
-                      />
-                    </figure>
-                  </Parallax>
-                </div>
-                <aside className="space-y-7">
-                  <dl className="space-y-5 text-sm text-[color:var(--vs-muted)]">
-                    <div>
-                      <dt className="vs-label">Date</dt>
-                      <dd className="mt-3">{nextEvent.date}</dd>
-                    </div>
-                    <div>
-                      <dt className="vs-label">Time</dt>
-                      <dd className="mt-3">{nextEvent.time}</dd>
-                    </div>
-                    <div>
-                      <dt className="vs-label">Why attend</dt>
-                      <dd className="mt-3 leading-7">
-                        To meet the work while it is active, once your entry into
-                        the platform has been established.
-                      </dd>
-                    </div>
-                  </dl>
-                  <Link href={nextEvent.actionHref} className="vs-btn">
-                    {nextEvent.actionLabel}
-                  </Link>
-                </aside>
-              </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <section className="vs-section vs-surface-alt">
+      <section className="vs-section vs-tint">
+        <div className="vs-wrap vs-section-inner-tight">
+          <Reveal>
+            <p className="vs-label mb-8">Current / next</p>
+            <div className="vs-card grid gap-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(15rem,0.65fr)]">
+              <div>
+                <p className="vs-label vs-label-alt mb-5">Next live session</p>
+                <h2 className="vs-title max-w-[36rem]">{nextEvent.title}</h2>
+                <p className="vs-copy mt-6 max-w-[38rem]">{nextEvent.framing}</p>
+                <Parallax strength={14} className="mt-8 max-w-[38rem]">
+                  <figure className="vs-media">
+                    <img
+                      src="https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1100&q=80"
+                      alt="Focused live discussion setting"
+                      loading="lazy"
+                    />
+                  </figure>
+                </Parallax>
+              </div>
+              <aside className="space-y-6">
+                <dl className="space-y-5 text-sm text-[color:var(--vs-muted)]">
+                  <div>
+                    <dt className="vs-label vs-label-alt">Date</dt>
+                    <dd className="mt-3">{nextEvent.date}</dd>
+                  </div>
+                  <div>
+                    <dt className="vs-label vs-label-alt">Time</dt>
+                    <dd className="mt-3">{nextEvent.time}</dd>
+                  </div>
+                  <div>
+                    <dt className="vs-label vs-label-alt">Why attend</dt>
+                    <dd className="mt-3 leading-7">
+                      To meet the work while it is active, once your entry into
+                      the platform has been established.
+                    </dd>
+                  </div>
+                </dl>
+                <Link href={nextEvent.actionHref} className="vs-btn w-full">
+                  {nextEvent.actionLabel}
+                </Link>
+              </aside>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="vs-section vs-section-dark">
         <div className="vs-wrap vs-section-inner">
           <Reveal className="grid gap-14 lg:grid-cols-[minmax(14rem,0.58fr)_minmax(0,1.42fr)]">
             <div>
-              <p className="vs-label vs-label-alt mb-6">Context of participation</p>
+              <p className="vs-label vs-label-on-dark mb-6">Context of participation</p>
               <h2 className="vs-title max-w-[28rem]">
                 Attendance matters only if it returns to structure afterward.
               </h2>
@@ -135,38 +133,36 @@ export default function EventsPage() {
         </div>
       </section>
 
-      <section className="vs-section">
+      <section className="vs-section vs-surface">
         <div className="vs-wrap vs-section-inner">
-          <Reveal className="grid gap-14 lg:grid-cols-[minmax(14rem,0.58fr)_minmax(0,1.42fr)]">
-            <div>
-              <p className="vs-label mb-6">Rhythm</p>
-              <h2 className="vs-title max-w-[28rem]">
-                The cadence is steady enough to shape expectation.
-              </h2>
-            </div>
-            <div className="space-y-8">
-              {rhythm.map((item) => (
-                <article key={item.title} className="border-t border-[color:var(--vs-line)] pt-6">
-                  <h3 className="vs-subtitle">{item.title}</h3>
-                  <p className="vs-copy mt-4 max-w-[38rem]">{item.text}</p>
-                </article>
-              ))}
-            </div>
+          <Reveal className="max-w-[28rem]">
+            <p className="vs-label mb-6">Rhythm</p>
+            <h2 className="vs-title">
+              The cadence is steady enough to shape expectation.
+            </h2>
+          </Reveal>
+          <Reveal delay={150} className="mt-12 grid gap-6 md:grid-cols-3">
+            {rhythm.map((item) => (
+              <article key={item.title} className="vs-card">
+                <h3 className="vs-subtitle">{item.title}</h3>
+                <p className="vs-copy mt-4">{item.text}</p>
+              </article>
+            ))}
           </Reveal>
         </div>
       </section>
 
-      <section className="vs-section vs-tint">
+      <section className="vs-section vs-section-accent">
         <div className="vs-wrap vs-section-inner-tight">
           <Reveal className="grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.82fr)]">
             <div>
-              <p className="vs-label mb-6">Continuity</p>
+              <p className="vs-label vs-label-on-accent mb-6">Continuity</p>
               <h2 className="vs-title max-w-[35rem]">The work has already been moving.</h2>
-              <div className="mt-10 space-y-5 max-w-[36rem]">
+              <div className="mt-10 grid gap-4 sm:grid-cols-3 max-w-[40rem]">
                 {pastSessions.map((session) => (
-                  <p key={session} className="vs-copy border-t border-[color:var(--vs-line)] pt-5">
-                    {session}
-                  </p>
+                  <div key={session} className="vs-card vs-card-on-accent">
+                    <p className="vs-copy text-[0.9rem]">{session}</p>
+                  </div>
                 ))}
               </div>
             </div>
@@ -176,10 +172,10 @@ export default function EventsPage() {
                 entry leads.
               </p>
               <div className="flex flex-col gap-4 sm:flex-row lg:flex-col lg:items-start">
-                <Link href={nextEvent.actionHref} className="vs-btn">
+                <Link href={nextEvent.actionHref} className="vs-btn vs-btn-on-accent">
                   {nextEvent.actionLabel}
                 </Link>
-                <Link href="/join" className="vs-btn vs-btn-subtle">
+                <Link href="/join" className="vs-btn vs-btn-ghost-on-color">
                   Enter the platform
                 </Link>
               </div>

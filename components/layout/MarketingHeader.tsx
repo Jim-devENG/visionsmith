@@ -8,7 +8,6 @@ const navigation = [
   { href: "/about", label: "About" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/events", label: "Events" },
-  { href: "/join", label: "Join" },
 ];
 
 function isActive(pathname: string, href: string) {
@@ -24,16 +23,16 @@ export function MarketingHeader() {
 
   return (
     <header className="sticky top-0 z-30 vs-glass">
-      <div className="vs-wrap flex h-[4.25rem] items-center justify-between gap-10">
+      <div className="vs-wrap flex h-[4.5rem] items-center justify-between gap-6">
         <Link
           href="/"
-          className="shrink-0 font-serif text-[15px] font-medium tracking-[-0.01em] text-[color:var(--vs-ink)]"
+          className="shrink-0 text-[17px] font-extrabold tracking-[-0.02em] text-[color:var(--vs-ink)]"
         >
           VisionSmith
         </Link>
 
         <nav aria-label="Primary" className="min-w-0 overflow-x-auto">
-          <ul className="flex min-w-max items-center gap-8">
+          <ul className="flex min-w-max items-center gap-1 rounded-[var(--vs-radius-pill)] bg-[color:var(--vs-surface-2)] p-1">
             {navigation.map((item) => {
               const active = isActive(pathname, item.href);
 
@@ -43,24 +42,23 @@ export function MarketingHeader() {
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={[
-                      "relative inline-block py-2 text-[13px] font-medium tracking-[0.01em] transition-colors duration-300",
+                      "inline-block rounded-[var(--vs-radius-pill)] px-4 py-2 text-[13px] font-semibold transition-colors duration-300",
                       active
-                        ? "text-[color:var(--vs-ink)]"
+                        ? "bg-[color:var(--vs-ink)] text-white"
                         : "text-[color:var(--vs-muted)] hover:text-[color:var(--vs-ink)]",
                     ].join(" ")}
                   >
                     {item.label}
-                    <span
-                      aria-hidden="true"
-                      className="absolute -bottom-[1px] left-0 h-px bg-[color:var(--vs-accent)] transition-all duration-300"
-                      style={{ width: active ? "100%" : "0%" }}
-                    />
                   </Link>
                 </li>
               );
             })}
           </ul>
         </nav>
+
+        <Link href="/join" className="vs-btn shrink-0 !py-2.5 !px-5 text-[13px]">
+          Join VisionSmith
+        </Link>
       </div>
     </header>
   );

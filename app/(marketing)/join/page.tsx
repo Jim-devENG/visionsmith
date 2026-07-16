@@ -14,7 +14,7 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
 
   return (
     <main>
-      <section className="vs-section">
+      <section className="vs-section vs-surface">
         <Reveal className="vs-wrap vs-section-inner-open">
           <p className="vs-label mb-8">Entry</p>
           <h1 className="vs-display max-w-[48rem]">
@@ -27,77 +27,68 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
         </Reveal>
       </section>
 
-      <section className="vs-section vs-surface">
+      <section className="vs-section vs-tint">
         <div className="vs-wrap vs-section-inner-tight">
-          <Reveal className="grid gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-            <div className="max-w-[22rem]">
-              <p className="vs-label vs-label-alt mb-6">What stepping in means</p>
-              <h2 className="vs-title">
-                The environment asks for steadiness, not display.
-              </h2>
+          <Reveal className="max-w-[36rem]">
+            <p className="vs-label mb-6">What stepping in means</p>
+            <h2 className="vs-title">
+              The environment asks for steadiness, not display.
+            </h2>
+          </Reveal>
+
+          <Reveal delay={150} className="mt-12 grid gap-6 md:grid-cols-3">
+            <div className="vs-card">
+              <p className="vs-label vs-label-alt mb-3">Expectation</p>
+              <p className="vs-copy">
+                You are expected to approach the work honestly, to name things
+                plainly, and to let structure challenge convenience.
+              </p>
             </div>
-
-            <div className="space-y-8">
-              <div className="grid gap-4 border-t border-[color:var(--vs-line)] pt-6 md:grid-cols-[10.5rem_minmax(0,1fr)]">
-                <p className="vs-label vs-label-alt">Expectation</p>
-                <p className="vs-copy max-w-[36rem]">
-                  You are expected to approach the work honestly, to name things
-                  plainly, and to let structure challenge convenience.
-                </p>
-              </div>
-
-              <div className="grid gap-4 border-t border-[color:var(--vs-line)] pt-6 md:grid-cols-[10.5rem_minmax(0,1fr)]">
-                <p className="vs-label vs-label-alt">Engagement</p>
-                <p className="vs-copy max-w-[36rem]">
-                  Participation is active. The value comes from returning,
-                  reviewing, correcting, and keeping your own record in view.
-                </p>
-              </div>
-
-              <div className="grid gap-4 border-t border-[color:var(--vs-line)] pt-6 md:grid-cols-[10.5rem_minmax(0,1fr)]">
-                <p className="vs-label vs-label-alt">Environment</p>
-                <p className="vs-copy max-w-[36rem]">
-                  The space is quieter than most online environments and less
-                  interested in performance. It is built for sustained
-                  responsibility.
-                </p>
-              </div>
+            <div className="vs-card">
+              <p className="vs-label vs-label-alt mb-3">Engagement</p>
+              <p className="vs-copy">
+                Participation is active. The value comes from returning,
+                reviewing, correcting, and keeping your own record in view.
+              </p>
+            </div>
+            <div className="vs-card">
+              <p className="vs-label vs-label-alt mb-3">Environment</p>
+              <p className="vs-copy">
+                The space is quieter than most online environments and less
+                interested in performance. It is built for sustained
+                responsibility.
+              </p>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <section className="vs-section vs-tint-warm">
+      <section className="vs-section vs-section-dark">
         <div className="vs-wrap vs-section-inner">
-          <Reveal className="grid gap-14 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
-            <div className="max-w-[22rem]">
-              <p className="vs-label mb-6">What you gain</p>
-              <h2 className="vs-title">
-                Better conditions for clear judgment and consistent execution.
-              </h2>
-            </div>
+          <Reveal className="max-w-[36rem]">
+            <p className="vs-label vs-label-on-dark mb-6">What you gain</p>
+            <h2 className="vs-title">
+              Better conditions for clear judgment and consistent execution.
+            </h2>
+          </Reveal>
 
-            <div className="space-y-7">
-              {[
-                "Clearer decisions because standards and obligations are made explicit.",
-                "Stronger structure because review and correction have a defined place.",
-                "Greater consistency because commitments stay visible in one environment.",
-                "A serious atmosphere where discipline is treated as ordinary practice.",
-              ].map((item, index) => (
-                <div
-                  key={item}
-                  className="grid gap-4 border-t border-[color:var(--vs-line-strong)] pt-6 md:grid-cols-[2.7rem_minmax(0,1fr)]"
-                >
-                  <span className="vs-label">0{index + 1}</span>
-                  <p className="vs-copy max-w-[38rem]">{item}</p>
-                </div>
-              ))}
-            </div>
+          <Reveal delay={150} className="mt-12 grid gap-5 sm:grid-cols-2">
+            {[
+              "Clearer decisions because standards and obligations are made explicit.",
+              "Stronger structure because review and correction have a defined place.",
+              "Greater consistency because commitments stay visible in one environment.",
+              "A serious atmosphere where discipline is treated as ordinary practice.",
+            ].map((item, index) => (
+              <div key={item} className="vs-card vs-card-on-dark">
+                <span className="vs-label vs-label-on-dark">0{index + 1}</span>
+                <p className="vs-copy mt-4">{item}</p>
+              </div>
+            ))}
           </Reveal>
         </div>
       </section>
 
-      <section className="vs-section">
+      <section className="vs-section vs-surface">
         <div className="vs-wrap vs-section-inner">
           <Reveal className="grid gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
             <div className="max-w-[22rem]">
@@ -122,7 +113,7 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
 
             <form
               action={submitParticipantEntry}
-              className="border border-[color:var(--vs-line)] bg-[color:var(--vs-surface)] p-8 sm:p-10"
+              className="vs-card"
             >
               <div className="space-y-8">
                 {error ? (
@@ -175,7 +166,7 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
                   />
                 </div>
 
-                <button type="submit" className="vs-btn">
+                <button type="submit" className="vs-btn w-full">
                   Enter VisionSmith
                 </button>
               </div>
@@ -184,7 +175,7 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
         </div>
       </section>
 
-      <section className="vs-section vs-tint">
+      <section className="vs-section vs-section-accent">
         <div className="vs-wrap vs-section-inner-tight">
           <p className="vs-title max-w-[40rem]">
             Enter only if you intend to let the structure require something of

@@ -13,11 +13,11 @@ const fitNotes = [
 
 export function Positioning() {
   return (
-    <section className="vs-section vs-tint-warm">
-      <div className="vs-wrap vs-section-inner-tight">
+    <section className="vs-section vs-section-accent">
+      <div className="vs-wrap vs-section-inner">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1.45fr)_minmax(0,1fr)]">
           <Reveal className="max-w-[40rem]">
-            <p className="vs-label vs-label-alt mb-4">Positioning</p>
+            <p className="vs-label vs-label-on-accent mb-4">Positioning</p>
             <h2 className="vs-title max-w-[33rem]">
               This is not a productivity layer. It is a place to make inner
               governance explicit.
@@ -32,15 +32,10 @@ export function Positioning() {
             </div>
           </Reveal>
 
-          <Reveal delay={150} className="space-y-8 lg:pt-8">
-            {fitNotes.map((item, index) => (
-              <div
-                key={item.label}
-                className="border-t border-[color:var(--vs-line-strong)] pt-6"
-              >
-                <p className="vs-label mb-3">
-                  0{index + 1} — {item.label}
-                </p>
+          <Reveal delay={150} className="space-y-5 lg:pt-2">
+            {fitNotes.map((item) => (
+              <div key={item.label} className="vs-card vs-card-on-accent">
+                <p className="vs-label vs-label-on-accent mb-3">{item.label}</p>
                 <p className="vs-copy max-w-[28rem]">{item.text}</p>
               </div>
             ))}

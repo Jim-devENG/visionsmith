@@ -22,22 +22,7 @@ export function NextStep() {
               whether you can work inside it. Only then choose the level of
               structure you want around you.
             </p>
-          </Reveal>
-
-          <Reveal delay={150} className="space-y-8">
-            <ol className="space-y-7">
-              {nextSteps.map((step, index) => (
-                <li
-                  key={step}
-                  className="grid gap-4 border-t border-[color:var(--vs-line-strong)] pt-6 md:grid-cols-[2.8rem_minmax(0,1fr)]"
-                >
-                  <span className="vs-label pt-1">0{index + 1}</span>
-                  <p className="vs-copy">{step}</p>
-                </li>
-              ))}
-            </ol>
-
-            <div className="flex flex-col gap-4 pt-2 sm:flex-row">
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link href="/join" className="vs-btn">
                 Enter VisionSmith
               </Link>
@@ -45,6 +30,17 @@ export function NextStep() {
                 Read the framework
               </Link>
             </div>
+          </Reveal>
+
+          <Reveal delay={150} className="space-y-5">
+            {nextSteps.map((step, index) => (
+              <div key={step} className="vs-card flex gap-5">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[color:var(--vs-accent-soft)] text-[13px] font-bold text-[color:var(--vs-accent-strong)]">
+                  {index + 1}
+                </span>
+                <p className="vs-copy pt-1">{step}</p>
+              </div>
+            ))}
           </Reveal>
         </div>
       </div>
