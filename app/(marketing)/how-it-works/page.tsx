@@ -59,9 +59,8 @@ export default function HowItWorksPage() {
           <Reveal className="grid gap-14 lg:grid-cols-[minmax(0,2.05fr)_minmax(15rem,0.85fr)] lg:items-end">
             <div>
               <p className="vs-label mb-8">From intention to execution</p>
-              <h1 className="vs-display max-w-[46rem]">
-                VisionSmith works by giving private intention a visible
-                governing structure.
+              <h1 className="vs-display max-w-[36rem]">
+                Turn intention into structure.
               </h1>
               <p className="vs-copy mt-10 max-w-[40rem]">
                 Most people do not fail because they lack ideas. They fail

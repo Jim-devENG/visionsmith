@@ -38,9 +38,8 @@ export default function AboutPage() {
           <Reveal className="grid gap-14 lg:grid-cols-[minmax(0,2.05fr)_minmax(15rem,0.85fr)] lg:items-end">
             <div>
               <p className="vs-label mb-8">What this platform is</p>
-              <h1 className="vs-display max-w-[46rem]">
-                VisionSmith is a platform for people who want their inner
-                government made explicit.
+              <h1 className="vs-display max-w-[36rem]">
+                Your inner government, made explicit.
               </h1>
               <p className="vs-copy mt-10 max-w-[40rem]">
                 It exists for the disciplined work of becoming more coherent:

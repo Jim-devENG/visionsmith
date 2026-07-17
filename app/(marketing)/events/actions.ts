@@ -4,17 +4,17 @@ import { redirect } from "next/navigation";
 import { sql } from "../../../lib/db";
 
 function encodeError(message: string) {
-  return `/join?error=${encodeURIComponent(message)}`;
+  return `/events?error=${encodeURIComponent(message)}#register`;
 }
 
-export async function submitParticipantEntry(formData: FormData) {
+export async function registerForEvent(eventId: string, formData: FormData) {
   const fullName = String(formData.get("full_name") ?? "")
     .replace(/\s+/g, " ")
     .trim();
   const email = String(formData.get("email") ?? "")
     .trim()
     .toLowerCase();
-  const intentionRaw = String(formData.get("intention") ?? "").trim();
+  const noteRaw = String(formData.get("note") ?? "").trim();
 
   if (!fullName || fullName.length < 2) {
     redirect(encodeError("A full name is required."));
@@ -25,31 +25,29 @@ export async function submitParticipantEntry(formData: FormData) {
   }
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
   if (!emailPattern.test(email)) {
     redirect(encodeError("Enter a valid email address."));
   }
 
-  const intention = intentionRaw.length > 0 ? intentionRaw.slice(0, 280) : null;
-
+  const note = noteRaw.length > 0 ? noteRaw.slice(0, 280) : null;
   let errorMessage: string | null = null;
 
   try {
     await sql`
-      insert into participants (full_name, email, intention, source)
-      values (${fullName}, ${email}, ${intention}, 'join')
+      insert into event_registrations (event_id, full_name, email, note)
+      values (${eventId}, ${fullName}, ${email}, ${note})
     `;
   } catch (err) {
     const code = (err as { code?: string } | null)?.code;
     errorMessage =
       code === "23505"
-        ? "An entry with this email already exists. Wait for further communication."
-        : "Entry could not be recorded. Please try once more.";
+        ? "You're already registered for this event."
+        : "Registration could not be recorded. Please try once more.";
   }
 
   if (errorMessage) {
     redirect(encodeError(errorMessage));
   }
 
-  redirect("/join/entered");
+  redirect("/events?registered=1#register");
 }

@@ -8,8 +8,8 @@ export default function JoinEnteredPage() {
       <section className="vs-section vs-surface">
         <Reveal className="vs-wrap vs-section-inner-open">
           <p className="vs-label mb-8">Entry recorded</p>
-          <h1 className="vs-display max-w-[48rem]">
-            Your entry into VisionSmith has been recorded.
+          <h1 className="vs-display max-w-[28rem]">
+            Entry recorded.
           </h1>
           <p className="vs-copy mt-10 max-w-[40rem]">
             You are no longer in observation mode. Entry means your standards,

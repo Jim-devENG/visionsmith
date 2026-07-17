@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ChaosField } from "../ui/ChaosField";
 import { Magnetic } from "../ui/Magnetic";
 
-const headline = "Build a standard that can govern your weeks.";
+const headline = "Govern your weeks.";
 
 const container = {
   hidden: {},

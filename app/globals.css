@@ -568,3 +568,70 @@ label {
     transition: none;
   }
 }
+
+/* Rich text content — shared by the admin Tiptap editor and public blog posts */
+.prose-editor {
+  color: var(--vs-muted);
+  line-height: 1.8;
+}
+
+.prose-editor > * + * {
+  margin-top: 1.1em;
+}
+
+.prose-editor h2 {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: var(--vs-ink);
+  line-height: 1.3;
+}
+
+.prose-editor h3 {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--vs-ink);
+  line-height: 1.35;
+}
+
+.prose-editor p {
+  margin: 0;
+}
+
+.prose-editor ul,
+.prose-editor ol {
+  padding-left: 1.4em;
+}
+
+.prose-editor li + li {
+  margin-top: 0.4em;
+}
+
+.prose-editor blockquote {
+  border-left: 2px solid var(--vs-line-strong);
+  padding-left: 1em;
+  color: var(--vs-ink-soft);
+  font-style: italic;
+}
+
+.prose-editor a {
+  color: var(--vs-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.prose-editor img {
+  border-radius: var(--vs-radius);
+  max-width: 100%;
+  height: auto;
+}
+
+.prose-editor code {
+  background: var(--vs-surface-2);
+  border-radius: 4px;
+  padding: 0.15em 0.4em;
+  font-size: 0.9em;
+}

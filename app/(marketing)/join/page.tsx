@@ -18,8 +18,8 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
       <section className="vs-section vs-surface">
         <Reveal className="vs-wrap vs-section-inner-open">
           <p className="vs-label mb-8">Entry</p>
-          <h1 className="vs-display max-w-[48rem]">
-            Joining VisionSmith is a decision to live under a clearer standard.
+          <h1 className="vs-display max-w-[34rem]">
+            Live under a clearer standard.
           </h1>
           <p className="vs-copy mt-10 max-w-[40rem]">
             This is where interest becomes participation. Enter only if you

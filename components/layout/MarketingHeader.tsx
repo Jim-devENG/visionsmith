@@ -9,6 +9,7 @@ const navigation = [
   { href: "/about", label: "About" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/events", label: "Events" },
+  { href: "/blog", label: "Blog" },
 ];
 
 function isActive(pathname: string, href: string) {
@@ -32,7 +33,7 @@ export function MarketingHeader() {
             width={669}
             height={373}
             priority
-            className="h-8 w-auto"
+            className="h-12 w-auto"
           />
         </Link>
 
