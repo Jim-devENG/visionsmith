@@ -30,7 +30,7 @@ export async function MarketingFooter() {
               alt="VisionSmith"
               width={669}
               height={373}
-              className="h-10 w-auto"
+              className="h-14 w-auto"
             />
             <p className="mt-4 text-[15px] leading-7 text-white/60">
               A governed environment for standards, review, and execution.
