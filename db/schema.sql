@@ -26,11 +26,17 @@ create table if not exists events (
   status text not null default 'upcoming' check (status in ('upcoming', 'past')),
   is_featured boolean not null default false,
   custom_questions jsonb not null default '[]',
+  flyer_url text,
+  redirect_label text,
+  redirect_url text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
 create index if not exists events_status_date_idx on events (status, event_date desc);
 alter table events add column if not exists custom_questions jsonb not null default '[]';
+alter table events add column if not exists flyer_url text;
+alter table events add column if not exists redirect_label text;
+alter table events add column if not exists redirect_url text;
 
 -- ── Event registrations ─────────────────────────────────
 create table if not exists event_registrations (

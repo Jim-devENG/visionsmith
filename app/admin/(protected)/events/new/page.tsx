@@ -1,5 +1,6 @@
 import { AdminShell } from "../../../../../components/admin/AdminShell";
 import { EventQuestionsField } from "../../../../../components/admin/EventQuestionsField";
+import { ImageUploadField } from "../../../../../components/admin/ImageUploadField";
 import { createEvent } from "../actions";
 
 type NewEventPageProps = {
@@ -32,6 +33,8 @@ export default async function NewEventPage({ searchParams }: NewEventPageProps) 
           <label htmlFor="framing">Framing (description)</label>
           <textarea id="framing" name="framing" rows={4} required className="vs-textarea mt-3" />
         </div>
+
+        <ImageUploadField name="flyer_url" label="Event flyer (optional)" prefix="event-flyers" />
 
         <div className="grid grid-cols-2 gap-4">
           <div>
@@ -69,6 +72,34 @@ export default async function NewEventPage({ searchParams }: NewEventPageProps) 
         </label>
 
         <EventQuestionsField name="custom_questions" />
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="redirect_label">Next-step link label (optional)</label>
+            <input
+              id="redirect_label"
+              name="redirect_label"
+              type="text"
+              maxLength={80}
+              placeholder="Join the WhatsApp group"
+              className="vs-input mt-3"
+            />
+          </div>
+          <div>
+            <label htmlFor="redirect_url">Next-step link URL (optional)</label>
+            <input
+              id="redirect_url"
+              name="redirect_url"
+              type="url"
+              placeholder="https://chat.whatsapp.com/..."
+              className="vs-input mt-3"
+            />
+          </div>
+        </div>
+        <p className="vs-meta">
+          Shown as a button right after someone registers, so they can move straight into
+          wherever you want them next.
+        </p>
 
         <button type="submit" className="vs-btn w-full">
           Create event

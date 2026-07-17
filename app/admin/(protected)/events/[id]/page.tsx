@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { sql } from "../../../../../lib/db";
 import { AdminShell } from "../../../../../components/admin/AdminShell";
 import { EventQuestionsField } from "../../../../../components/admin/EventQuestionsField";
+import { ImageUploadField } from "../../../../../components/admin/ImageUploadField";
 import { updateEvent } from "../actions";
 
 type EditEventPageProps = {
@@ -26,6 +27,9 @@ export default async function EditEventPage({ params, searchParams }: EditEventP
         status: string;
         is_featured: boolean;
         custom_questions: string[];
+        flyer_url: string | null;
+        redirect_label: string | null;
+        redirect_url: string | null;
       }
     | undefined;
 
@@ -57,6 +61,8 @@ export default async function EditEventPage({ params, searchParams }: EditEventP
           <textarea id="framing" name="framing" rows={4} required defaultValue={event.framing} className="vs-textarea mt-3" />
         </div>
 
+        <ImageUploadField name="flyer_url" label="Event flyer (optional)" prefix="event-flyers" defaultValue={event.flyer_url} />
+
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label htmlFor="event_date">Date</label>
@@ -87,6 +93,36 @@ export default async function EditEventPage({ params, searchParams }: EditEventP
         </label>
 
         <EventQuestionsField name="custom_questions" defaultValue={event.custom_questions} />
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label htmlFor="redirect_label">Next-step link label (optional)</label>
+            <input
+              id="redirect_label"
+              name="redirect_label"
+              type="text"
+              maxLength={80}
+              defaultValue={event.redirect_label ?? ""}
+              placeholder="Join the WhatsApp group"
+              className="vs-input mt-3"
+            />
+          </div>
+          <div>
+            <label htmlFor="redirect_url">Next-step link URL (optional)</label>
+            <input
+              id="redirect_url"
+              name="redirect_url"
+              type="url"
+              defaultValue={event.redirect_url ?? ""}
+              placeholder="https://chat.whatsapp.com/..."
+              className="vs-input mt-3"
+            />
+          </div>
+        </div>
+        <p className="vs-meta">
+          Shown as a button right after someone registers, so they can move straight into
+          wherever you want them next.
+        </p>
 
         <button type="submit" className="vs-btn w-full">
           Save changes

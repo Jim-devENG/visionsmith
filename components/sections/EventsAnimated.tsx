@@ -30,6 +30,9 @@ export type FeaturedEvent = {
   time: string;
   actionLabel: string;
   customQuestions: string[];
+  flyerUrl: string | null;
+  redirectLabel: string | null;
+  redirectUrl: string | null;
 };
 
 export function EventsAnimated({
@@ -80,6 +83,12 @@ export function EventsAnimated({
             {featured ? (
               <div className="vs-card vs-card-accent-top grid gap-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(15rem,0.65fr)]">
                 <div>
+                  {featured.flyerUrl ? (
+                    <div className="vs-flyer mb-8">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={featured.flyerUrl} alt={`${featured.title} flyer`} />
+                    </div>
+                  ) : null}
                   <p className="vs-label vs-label-alt mb-5">Next live session</p>
                   <h2 className="vs-title max-w-[36rem]">{featured.title}</h2>
                   <p className="vs-copy mt-6 max-w-[38rem]">{featured.framing}</p>
@@ -99,9 +108,21 @@ export function EventsAnimated({
                         </p>
                       ) : null}
                       {registered ? (
-                        <p role="status" className="text-[13px] leading-6 text-[color:var(--vs-accent-strong)]">
-                          You're registered — see you there.
-                        </p>
+                        <div role="status" className="space-y-3">
+                          <p className="text-[13px] leading-6 text-[color:var(--vs-accent-strong)]">
+                            You're registered — see you there.
+                          </p>
+                          {featured.redirectUrl ? (
+                            <a
+                              href={featured.redirectUrl}
+                              target="_blank"
+                              rel="noreferrer noopener"
+                              className="vs-btn w-full"
+                            >
+                              {featured.redirectLabel || "Continue"}
+                            </a>
+                          ) : null}
+                        </div>
                       ) : null}
                       <input
                         name="full_name"

@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { sql } from "../../../../lib/db";
 import { slugify } from "../../../../lib/slug";
+import { isSafeHttpUrl } from "../../../../lib/sanitize";
 
 type EventInput = {
   title: string;
@@ -14,6 +15,9 @@ type EventInput = {
   status: string;
   is_featured: boolean;
   custom_questions: string[];
+  flyer_url: string | null;
+  redirect_label: string | null;
+  redirect_url: string | null;
 };
 
 function readEventInput(formData: FormData): EventInput {
@@ -30,6 +34,10 @@ function readEventInput(formData: FormData): EventInput {
     customQuestions = [];
   }
 
+  const flyerUrl = String(formData.get("flyer_url") ?? "").trim();
+  const redirectLabel = String(formData.get("redirect_label") ?? "").trim();
+  const redirectUrl = String(formData.get("redirect_url") ?? "").trim();
+
   return {
     title: String(formData.get("title") ?? "").trim(),
     framing: String(formData.get("framing") ?? "").trim(),
@@ -40,6 +48,9 @@ function readEventInput(formData: FormData): EventInput {
     status: String(formData.get("status") ?? "upcoming"),
     is_featured: formData.get("is_featured") === "on",
     custom_questions: customQuestions,
+    flyer_url: flyerUrl && isSafeHttpUrl(flyerUrl) ? flyerUrl : null,
+    redirect_label: redirectLabel ? redirectLabel.slice(0, 80) : null,
+    redirect_url: redirectUrl && isSafeHttpUrl(redirectUrl) ? redirectUrl : null,
   };
 }
 
@@ -57,8 +68,8 @@ export async function createEvent(formData: FormData) {
   }
 
   await sql`
-    insert into events (title, slug, framing, event_date, event_time, action_label, status, is_featured, custom_questions)
-    values (${input.title}, ${slug}, ${input.framing}, ${input.event_date}, ${input.event_time}, ${input.action_label}, ${input.status}, ${input.is_featured}, ${JSON.stringify(input.custom_questions)}::jsonb)
+    insert into events (title, slug, framing, event_date, event_time, action_label, status, is_featured, custom_questions, flyer_url, redirect_label, redirect_url)
+    values (${input.title}, ${slug}, ${input.framing}, ${input.event_date}, ${input.event_time}, ${input.action_label}, ${input.status}, ${input.is_featured}, ${JSON.stringify(input.custom_questions)}::jsonb, ${input.flyer_url}, ${input.redirect_label}, ${input.redirect_url})
   `;
 
   revalidatePath("/events");
@@ -86,6 +97,9 @@ export async function updateEvent(id: string, formData: FormData) {
       status = ${input.status},
       is_featured = ${input.is_featured},
       custom_questions = ${JSON.stringify(input.custom_questions)}::jsonb,
+      flyer_url = ${input.flyer_url},
+      redirect_label = ${input.redirect_label},
+      redirect_url = ${input.redirect_url},
       updated_at = now()
     where id = ${id}
   `;

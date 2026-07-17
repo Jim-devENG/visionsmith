@@ -11,7 +11,7 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
 
   const [featuredRows, pastRows] = await Promise.all([
     sql`
-      select id, title, framing, event_date, event_time, action_label, custom_questions
+      select id, title, framing, event_date, event_time, action_label, custom_questions, flyer_url, redirect_label, redirect_url
       from events
       where is_featured = true and status = 'upcoming'
       order by event_date asc
@@ -35,6 +35,9 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
         event_time: string;
         action_label: string;
         custom_questions: string[];
+        flyer_url: string | null;
+        redirect_label: string | null;
+        redirect_url: string | null;
       }
     | undefined;
 
@@ -57,6 +60,9 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
         time: row.event_time,
         actionLabel: row.action_label,
         customQuestions: row.custom_questions ?? [],
+        flyerUrl: row.flyer_url,
+        redirectLabel: row.redirect_label,
+        redirectUrl: row.redirect_url,
       }
     : null;
 

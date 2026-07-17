@@ -501,6 +501,25 @@
   font-weight: 600;
 }
 
+/* Flyer — flexible sizing, never crops the source image regardless of its aspect ratio */
+.vs-flyer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: var(--vs-radius-lg);
+  background: var(--vs-surface-2);
+  border: 1px solid var(--vs-line);
+}
+
+.vs-flyer img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 34rem;
+  object-fit: contain;
+}
+
 .vs-input,
 .vs-textarea {
   background: var(--vs-surface);
