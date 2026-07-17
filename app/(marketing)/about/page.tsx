@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { sql } from "../../../lib/db";
 import { FrameRings } from "../../../components/ui/FrameRings";
+import { Highlight } from "../../../components/ui/Highlight";
 import { Reveal } from "../../../components/ui/Reveal";
 import { Stamp } from "../../../components/ui/Stamp";
 
@@ -43,7 +44,7 @@ export default async function AboutPage() {
             <div>
               <p className="vs-label mb-8">What VisionSmith is</p>
               <h1 className="vs-display max-w-[36rem]">
-                The home of a way of thinking.
+                The home of a <Highlight>way of thinking</Highlight>.
               </h1>
               <p className="vs-copy mt-10 max-w-[40rem]">
                 VisionSmith exists for builders — the people creating
@@ -78,10 +79,8 @@ export default async function AboutPage() {
                 </h2>
               </div>
               <p className="vs-copy max-w-sm lg:border-l lg:border-[color:var(--vs-line)] lg:pl-8">
-                VisionSmith exists to close the distance between a good idea
-                and a well-built thing. Not by supplying more content, but by
-                giving builders a place to return to when they need to think
-                clearly before they act.
+                A place to return to when you need to think clearly before
+                you act.
               </p>
             </div>
           </Reveal>

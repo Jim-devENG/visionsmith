@@ -6,7 +6,7 @@ import { EventTicket } from "../ui/EventTicket";
 import { Reveal } from "../ui/Reveal";
 import { ShareButtons } from "./ShareButtons";
 
-const EVENTS_URL = "https://www.visionsmith.world/events";
+const EVENTS_URL = "https://www.visionsmith.world/events#register";
 
 const rhythm = [
   {
@@ -191,18 +191,11 @@ export function EventsAnimated({
                   afterward.
                 </h2>
               </div>
-              <div className="space-y-6 max-w-[40rem] lg:border-l lg:border-white/10 lg:pl-8">
+              <div className="max-w-[40rem] lg:border-l lg:border-white/10 lg:pl-8">
                 <p className="vs-copy">
-                  In VisionSmith, joining the platform and attending a
-                  session aren't the same act. Joining establishes your
-                  place inside the environment itself. Events are live
-                  points inside that environment — places to return,
-                  re-examine your thinking, and reset direction alongside
-                  other builders.
-                </p>
-                <p className="vs-copy">
-                  A session is useful when it changes what you build next.
-                  If it ends in admiration alone, it hasn't gone far enough.
+                  Joining establishes your place in the environment. Events
+                  are live points inside it — places to return and reset
+                  direction alongside other builders.
                 </p>
               </div>
             </div>

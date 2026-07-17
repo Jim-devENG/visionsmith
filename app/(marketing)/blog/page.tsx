@@ -2,6 +2,7 @@ import Link from "next/link";
 import { sql } from "../../../lib/db";
 import { Reveal } from "../../../components/ui/Reveal";
 import { Marquee } from "../../../components/ui/Marquee";
+import { Highlight } from "../../../components/ui/Highlight";
 
 type Post = {
   title: string;
@@ -108,7 +109,7 @@ export default async function BlogIndexPage() {
         <div className="vs-wrap relative vs-section-inner-tight text-center">
           <Reveal className="mx-auto max-w-xl">
             <p className="vs-label vs-label-on-dark mx-auto mb-6">Path forward</p>
-            <h2 className="vs-title">Reading is not the practice.</h2>
+            <h2 className="vs-title">Reading is not the <Highlight>practice</Highlight>.</h2>
             <p className="vs-copy mx-auto mt-6 max-w-lg">
               Notes are useful when they change what you build next. If they
               don't, the next step is the platform itself.

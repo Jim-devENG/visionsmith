@@ -38,10 +38,10 @@
   --vs-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --vs-ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Radius — generous, modern */
-  --vs-radius-sm: 10px;
-  --vs-radius: 16px;
-  --vs-radius-lg: 24px;
+  /* Radius — restrained */
+  --vs-radius-sm: 8px;
+  --vs-radius: 12px;
+  --vs-radius-lg: 16px;
   --vs-radius-pill: 999px;
 
   /* Shadow — soft elevation */
@@ -167,14 +167,14 @@
 
 .vs-copy {
   color: var(--vs-muted);
-  font-size: 1rem;
-  line-height: 1.75;
+  font-size: 0.95rem;
+  line-height: 1.6;
   margin: 0;
 }
 
 @media (min-width: 768px) {
   .vs-copy {
-    font-size: 1.0625rem;
+    font-size: 1rem;
   }
 }
 
@@ -268,13 +268,13 @@
   border-radius: var(--vs-radius-pill);
   color: var(--vs-surface);
   display: inline-flex;
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   font-weight: 700;
   justify-content: center;
   letter-spacing: 0.005em;
-  padding: 0.9rem 1.75rem;
+  padding: 0.7rem 1.4rem;
   box-shadow: var(--vs-shadow-sm);
-  transition: background-color 0.3s var(--vs-ease), border-color 0.3s var(--vs-ease), transform 0.3s var(--vs-ease), box-shadow 0.3s var(--vs-ease);
+  transition: background-color 0.35s var(--vs-ease), border-color 0.35s var(--vs-ease), transform 0.35s var(--vs-ease), box-shadow 0.35s var(--vs-ease), color 0.35s var(--vs-ease);
   cursor: pointer;
 }
 
@@ -381,12 +381,12 @@
   background: var(--vs-surface);
   border: 1px solid var(--vs-line);
   border-radius: var(--vs-radius-lg);
-  padding: 1.85rem;
+  padding: 1.5rem;
   box-shadow:
     0 1px 1px rgba(23, 20, 15, 0.03),
     0 20px 40px -24px rgba(201, 106, 27, 0.3),
     0 8px 18px -12px rgba(23, 20, 15, 0.1);
-  transition: transform 0.4s var(--vs-ease), box-shadow 0.4s var(--vs-ease), border-color 0.4s var(--vs-ease);
+  transition: transform 0.45s var(--vs-ease), box-shadow 0.45s var(--vs-ease), border-color 0.45s var(--vs-ease);
 }
 
 .vs-card:hover {
@@ -532,12 +532,14 @@
 }
 
 .vs-input {
-  padding: 0.875rem 1.1rem;
+  padding: 0.7rem 0.95rem;
+  font-size: 0.9rem;
 }
 
 .vs-textarea {
-  min-height: 8rem;
-  padding: 1rem 1.1rem;
+  min-height: 5.5rem;
+  padding: 0.8rem 0.95rem;
+  font-size: 0.9rem;
   resize: vertical;
 }
 

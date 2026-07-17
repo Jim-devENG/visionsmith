@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Checklist } from "../../../components/ui/Checklist";
+import { Highlight } from "../../../components/ui/Highlight";
 import { Reveal } from "../../../components/ui/Reveal";
 
 const progression = [
@@ -60,7 +61,7 @@ export default function HowItWorksPage() {
             <div>
               <p className="vs-label mb-8">From idea to architecture</p>
               <h1 className="vs-display max-w-[36rem]">
-                Learn to think like a builder.
+                Learn to think like a <Highlight>builder</Highlight>.
               </h1>
               <p className="vs-copy mt-10 max-w-[40rem]">
                 Most builders don't fail for lack of ideas. They fail because
@@ -90,9 +91,8 @@ export default function HowItWorksPage() {
               architecture, construct, refine.
             </h2>
             <p className="vs-copy mt-6">
-              Each step depends on the last. Without a pattern, architecture
-              is guesswork. Without architecture, building is improvisation.
-              Without refinement, good ideas stay half-built.
+              Each step depends on the last — skip one and good ideas stay
+              half-built.
             </p>
           </Reveal>
 

@@ -46,11 +46,8 @@ export function Positioning() {
             A place to make your thinking visible.
           </h2>
           <p className="vs-copy mt-6 max-w-[28rem]">
-            The point is to close the distance between a good idea and a
-            well-built thing. VisionSmith gives that work a frame: not loose
-            brainstorming, not performance theater, but structured thinking —
-            built for builders who would rather be challenged than agreed
-            with.
+            Closing the distance between a good idea and a well-built thing —
+            structured thinking, not loose brainstorming.
           </p>
         </motion.div>
       </div>
