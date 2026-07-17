@@ -34,35 +34,20 @@ export function System() {
           </h2>
         </motion.div>
 
-        <div className="mt-16 flex flex-col md:flex-row md:items-start">
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
           {systemOutcomes.map((item, index) => (
-            <div key={item.title} className="flex flex-1 items-stretch">
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-10%" }}
-                transition={{ duration: 0.6, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] as const }}
-                className="flex-1"
-              >
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--vs-accent-soft)] text-[13px] font-bold text-[color:var(--vs-accent-strong)]">
-                  {index + 1}
-                </span>
-                <h3 className="vs-subtitle mt-6 max-w-[16rem]">{item.title}</h3>
-                <p className="vs-copy mt-3 max-w-[18rem]">{item.text}</p>
-              </motion.div>
-
-              {index < systemOutcomes.length - 1 ? (
-                <div className="hidden items-start px-6 pt-5 md:flex">
-                  <motion.div
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true, margin: "-10%" }}
-                    transition={{ duration: 0.7, delay: index * 0.12 + 0.15, ease: [0.16, 1, 0.3, 1] as const }}
-                    className="h-px w-12 origin-left bg-[color:var(--vs-line-strong)]"
-                  />
-                </div>
-              ) : null}
-            </div>
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 0.6, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] as const }}
+              className="vs-card vs-card-accent-top"
+            >
+              <span className="vs-icon-badge">{index + 1}</span>
+              <h3 className="vs-subtitle mt-6">{item.title}</h3>
+              <p className="vs-copy mt-3">{item.text}</p>
+            </motion.div>
           ))}
         </div>
       </div>

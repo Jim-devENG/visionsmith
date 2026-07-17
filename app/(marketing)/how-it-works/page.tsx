@@ -111,22 +111,21 @@ export default function HowItWorksPage() {
 
       <section className="vs-section vs-section-dark">
         <div className="vs-wrap vs-section-inner">
-          <Reveal className="grid gap-14 lg:grid-cols-[minmax(14rem,0.58fr)_minmax(0,1.42fr)]">
-            <div>
-              <p className="vs-label vs-label-on-dark mb-6">Working sequence</p>
-              <h2 className="vs-title max-w-[26rem]">
-                A practical frame, not a vague philosophy.
-              </h2>
-            </div>
-            <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
-              {sequence.map((item, index) => (
-                <Reveal key={item.title} delay={index * 90} className="border-t border-white/10 pt-6">
-                  <h3 className="vs-subtitle">{item.title}</h3>
-                  <p className="vs-copy mt-3">{item.text}</p>
-                </Reveal>
-              ))}
-            </div>
+          <Reveal className="max-w-[32rem]">
+            <p className="vs-label vs-label-on-dark mb-6">Working sequence</p>
+            <h2 className="vs-title">
+              A practical frame, not a vague philosophy.
+            </h2>
           </Reveal>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {sequence.map((item, index) => (
+              <Reveal key={item.title} delay={index * 90} className="vs-card vs-card-on-dark vs-card-accent-top h-full">
+                <h3 className="vs-subtitle">{item.title}</h3>
+                <p className="vs-copy mt-3">{item.text}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -139,7 +138,7 @@ export default function HowItWorksPage() {
               the quantity of output.
             </h2>
           </Reveal>
-          <div className="mt-12 max-w-[42rem]">
+          <div className="mt-12 max-w-[46rem]">
             <Checklist items={effects} />
           </div>
         </div>
@@ -147,20 +146,18 @@ export default function HowItWorksPage() {
 
       <section className="vs-section vs-section-accent">
         <div className="vs-wrap vs-section-inner-tight">
-          <Reveal className="grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.8fr)]">
-            <div>
-              <p className="vs-label vs-label-on-accent mb-6">Next action</p>
-              <h2 className="vs-title max-w-[38rem]">
-                If this framework reads as necessary rather than severe, continue
-                to join.
-              </h2>
-              <p className="vs-copy mt-8 max-w-[40rem]">
-                The next step is not to admire the method. It is to decide
-                whether you want to work inside it with enough seriousness for
-                it to change your conduct.
-              </p>
-            </div>
-            <div className="flex flex-col gap-4 self-end sm:flex-row lg:flex-col lg:items-start">
+          <Reveal className="vs-card vs-card-on-accent mx-auto max-w-[40rem] text-center">
+            <p className="vs-label vs-label-on-accent mx-auto mb-6">Next action</p>
+            <h2 className="vs-title">
+              If this framework reads as necessary rather than severe,
+              continue to join.
+            </h2>
+            <p className="vs-copy mx-auto mt-6 max-w-[32rem]">
+              The next step is not to admire the method. It is to decide
+              whether you want to work inside it with enough seriousness for
+              it to change your conduct.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <Link href="/join" className="vs-btn vs-btn-on-accent">
                 Continue to join
               </Link>

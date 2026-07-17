@@ -367,40 +367,108 @@
   width: 100%;
 }
 
-/* Cards — rounded, soft-shadow surfaces */
+.vs-section-dark .vs-link {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.vs-section-dark .vs-link:hover {
+  color: var(--vs-accent-2);
+}
+
+/* Cards — elevated, layered shadow with a warm color cast */
 .vs-card {
+  position: relative;
   background: var(--vs-surface);
+  border: 1px solid var(--vs-line);
   border-radius: var(--vs-radius-lg);
-  padding: 1.75rem;
-  box-shadow: var(--vs-shadow);
-  transition: transform 0.35s var(--vs-ease), box-shadow 0.35s var(--vs-ease);
+  padding: 1.85rem;
+  box-shadow:
+    0 1px 1px rgba(23, 20, 15, 0.03),
+    0 20px 40px -24px rgba(201, 106, 27, 0.3),
+    0 8px 18px -12px rgba(23, 20, 15, 0.1);
+  transition: transform 0.4s var(--vs-ease), box-shadow 0.4s var(--vs-ease), border-color 0.4s var(--vs-ease);
 }
 
 .vs-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--vs-shadow-lg);
+  transform: translateY(-6px);
+  border-color: var(--vs-accent-soft-strong);
+  box-shadow:
+    0 1px 1px rgba(23, 20, 15, 0.03),
+    0 30px 54px -22px rgba(201, 106, 27, 0.36),
+    0 16px 28px -14px rgba(23, 20, 15, 0.16);
+}
+
+/* Optional top accent bar for content cards (skip on cards that bleed an image to the edge) */
+.vs-card-accent-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 1.4rem;
+  right: 1.4rem;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background: var(--vs-accent);
 }
 
 .vs-card-on-dark {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: none;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.5);
 }
 
 .vs-card-on-dark:hover {
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.09);
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.075);
+  border-color: rgba(217, 119, 6, 0.4);
+  box-shadow: 0 26px 48px -20px rgba(0, 0, 0, 0.55);
+}
+
+.vs-card-on-dark.vs-card-accent-top::before {
+  background: var(--vs-accent-2);
 }
 
 .vs-card-on-accent {
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: none;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  box-shadow: 0 20px 40px -28px rgba(0, 0, 0, 0.22);
 }
 
 .vs-card-on-accent:hover {
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.42);
+}
+
+.vs-card-on-accent.vs-card-accent-top::before {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* Icon / number badges used inside fancy cards */
+.vs-icon-badge {
+  display: inline-flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--vs-accent-soft);
+  color: var(--vs-accent-strong);
+  font-weight: 800;
+  font-size: 0.95rem;
+  box-shadow: 0 0 0 6px var(--vs-accent-soft);
+}
+
+.vs-icon-badge-on-dark {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.06);
+}
+
+.vs-icon-badge-on-accent {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.12);
 }
 
 /* Media — rounded, elevated */

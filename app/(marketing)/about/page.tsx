@@ -3,7 +3,6 @@ import { sql } from "../../../lib/db";
 import { FrameRings } from "../../../components/ui/FrameRings";
 import { Reveal } from "../../../components/ui/Reveal";
 import { Stamp } from "../../../components/ui/Stamp";
-import { StrikeList } from "../../../components/ui/StrikeList";
 
 const refusals = [
   "It is not a place to accumulate better language without changing conduct.",
@@ -68,35 +67,43 @@ export default async function AboutPage() {
 
       <section className="vs-section vs-tint">
         <div className="vs-wrap vs-section-inner-tight">
-          <Reveal className="grid gap-12 lg:grid-cols-[minmax(0,1.55fr)_minmax(16rem,0.8fr)]">
-            <div>
-              <p className="vs-label mb-6">Why it exists</p>
-              <h2 className="vs-title max-w-[40rem]">
-                Because many serious people are not lacking desire. They are
-                lacking an ordered way to live under what they already know.
-              </h2>
+          <Reveal>
+            <div className="vs-card vs-card-accent-top grid gap-10 lg:grid-cols-[minmax(0,1.55fr)_minmax(16rem,0.8fr)]">
+              <div>
+                <p className="vs-label mb-6">Why it exists</p>
+                <h2 className="vs-title max-w-[40rem]">
+                  Because many serious people are not lacking desire. They are
+                  lacking an ordered way to live under what they already know.
+                </h2>
+              </div>
+              <p className="vs-copy max-w-sm lg:border-l lg:border-[color:var(--vs-line)] lg:pl-8">
+                VisionSmith exists to reduce the distance between recognition
+                and practice. Not by supplying more stimulation, but by giving
+                a person somewhere to return when they need honesty, order,
+                and correction.
+              </p>
             </div>
-            <p className="vs-copy max-w-sm">
-              VisionSmith exists to reduce the distance between recognition and
-              practice. Not by supplying more stimulation, but by giving a
-              person somewhere to return when they need honesty, order, and
-              correction.
-            </p>
           </Reveal>
         </div>
       </section>
 
       <section className="vs-section vs-section-dark">
         <div className="vs-wrap vs-section-inner">
-          <Reveal className="grid gap-14 lg:grid-cols-[minmax(14rem,0.6fr)_minmax(0,1.4fr)]">
-            <div>
-              <p className="vs-label vs-label-on-dark mb-6">What it refuses</p>
-              <h2 className="vs-title max-w-sm">
-                The platform is defined as much by refusal as by method.
-              </h2>
-            </div>
-            <StrikeList items={refusals} />
+          <Reveal className="max-w-[36rem]">
+            <p className="vs-label vs-label-on-dark mb-6">What it refuses</p>
+            <h2 className="vs-title max-w-sm">
+              The platform is defined as much by refusal as by method.
+            </h2>
           </Reveal>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            {refusals.map((item, index) => (
+              <Reveal key={item} delay={index * 100} className="vs-card vs-card-on-dark vs-card-accent-top h-full">
+                <span className="vs-icon-badge vs-icon-badge-on-dark">&times;</span>
+                <p className="vs-copy mt-6">{item}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -158,31 +165,31 @@ export default async function AboutPage() {
 
       <section className="vs-section vs-section-accent">
         <div className="vs-wrap vs-section-inner-tight">
-          <Reveal className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(16rem,0.8fr)]">
-            <div>
-              <p className="vs-label vs-label-on-accent mb-6">Built for</p>
-              <h2 className="vs-title max-w-[38rem]">
-                VisionSmith is built for the person who would rather be
-                corrected than flattered.
-              </h2>
-              <div className="mt-10 space-y-5 max-w-[40rem]">
-                {fit.map((item) => (
-                  <p key={item} className="vs-copy">
-                    {item}
-                  </p>
-                ))}
-              </div>
-            </div>
+          <Reveal className="max-w-[40rem]">
+            <p className="vs-label vs-label-on-accent mb-6">Built for</p>
+            <h2 className="vs-title max-w-[38rem]">
+              VisionSmith is built for the person who would rather be
+              corrected than flattered.
+            </h2>
+          </Reveal>
 
-            <div className="space-y-6 self-end">
-              <p className="vs-meta max-w-[16rem]">
-                If that description feels clarifying rather than severe, the
-                next step is direct.
-              </p>
-              <Link href="/join" className="vs-btn vs-btn-on-accent">
-                Continue to join
-              </Link>
-            </div>
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+            {fit.map((item, index) => (
+              <Reveal key={item} delay={index * 100} className="vs-card vs-card-on-accent vs-card-accent-top h-full">
+                <span className="vs-icon-badge vs-icon-badge-on-accent">0{index + 1}</span>
+                <p className="vs-copy mt-6">{item}</p>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={300} className="mt-12 flex flex-col items-start gap-6 border-t border-white/15 pt-10 sm:flex-row sm:items-center sm:justify-between">
+            <p className="vs-copy max-w-[28rem]">
+              If that description feels clarifying rather than severe, the
+              next step is direct.
+            </p>
+            <Link href="/join" className="vs-btn vs-btn-on-accent shrink-0">
+              Continue to join
+            </Link>
           </Reveal>
         </div>
       </section>

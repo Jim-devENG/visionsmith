@@ -25,7 +25,7 @@ export function MarketingHeader() {
 
   return (
     <header className="sticky top-0 z-30 vs-glass">
-      <div className="vs-wrap flex h-[5.5rem] items-center justify-between gap-6">
+      <div className="vs-wrap flex h-[6.5rem] items-center justify-between gap-6">
         <Link href="/" className="shrink-0">
           <Image
             src="/wordicon.png"
@@ -33,7 +33,7 @@ export function MarketingHeader() {
             width={669}
             height={373}
             priority
-            className="h-16 w-auto"
+            className="h-20 w-auto"
           />
         </Link>
 

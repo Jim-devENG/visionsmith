@@ -60,7 +60,7 @@ export function EventsAnimated({
                 correction, and renewed structure happen in real time.
               </p>
             </div>
-            <div className="vs-card">
+            <div className="vs-card vs-card-accent-top">
               <p className="vs-label vs-label-alt mb-4">What this page is for</p>
               <p className="vs-meta">
                 This is the current edge of activity. If you want to enter the
@@ -76,7 +76,7 @@ export function EventsAnimated({
           <Reveal>
             <p className="vs-label mb-8">Current / next</p>
             {featured ? (
-              <div className="vs-card grid gap-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(15rem,0.65fr)]">
+              <div className="vs-card vs-card-accent-top grid gap-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(15rem,0.65fr)]">
                 <div>
                   <p className="vs-label vs-label-alt mb-5">Next live session</p>
                   <h2 className="vs-title max-w-[36rem]">{featured.title}</h2>
@@ -86,7 +86,7 @@ export function EventsAnimated({
                     platform has been established.
                   </p>
                 </div>
-                <aside className="space-y-6">
+                <aside className="space-y-6 lg:border-l lg:border-[color:var(--vs-line)] lg:pl-8">
                   <EventTicket day={featured.day} month={featured.month} time={featured.time} />
 
                   {registerAction ? (
@@ -127,7 +127,7 @@ export function EventsAnimated({
                 </aside>
               </div>
             ) : (
-              <div className="vs-card">
+              <div className="vs-card vs-card-accent-top">
                 <p className="vs-copy">
                   No live session is scheduled yet. Check back soon, or join now
                   to be notified the moment one is announced.
@@ -143,25 +143,27 @@ export function EventsAnimated({
 
       <section className="vs-section vs-section-dark">
         <div className="vs-wrap vs-section-inner">
-          <Reveal className="grid gap-14 lg:grid-cols-[minmax(14rem,0.58fr)_minmax(0,1.42fr)]">
-            <div>
-              <p className="vs-label vs-label-on-dark mb-6">Context of participation</p>
-              <h2 className="vs-title max-w-[28rem]">
-                Attendance matters only if it returns to structure afterward.
-              </h2>
-            </div>
-            <div className="space-y-6 max-w-[40rem]">
-              <p className="vs-copy">
-                In VisionSmith, joining the platform and attending a session are
-                not the same act. Joining establishes participation in the
-                environment itself. Events are live points inside that
-                environment: places to return, re-examine standards, and reset
-                direction in company with the current rhythm.
-              </p>
-              <p className="vs-copy">
-                A session is useful when it alters the next week of conduct. If
-                it ends in admiration alone, it has not gone far enough.
-              </p>
+          <Reveal>
+            <div className="vs-card vs-card-on-dark vs-card-accent-top grid gap-10 lg:grid-cols-[minmax(14rem,0.58fr)_minmax(0,1.42fr)]">
+              <div>
+                <p className="vs-label vs-label-on-dark mb-6">Context of participation</p>
+                <h2 className="vs-title max-w-[28rem]">
+                  Attendance matters only if it returns to structure afterward.
+                </h2>
+              </div>
+              <div className="space-y-6 max-w-[40rem] lg:border-l lg:border-white/10 lg:pl-8">
+                <p className="vs-copy">
+                  In VisionSmith, joining the platform and attending a session
+                  are not the same act. Joining establishes participation in
+                  the environment itself. Events are live points inside that
+                  environment: places to return, re-examine standards, and
+                  reset direction in company with the current rhythm.
+                </p>
+                <p className="vs-copy">
+                  A session is useful when it alters the next week of conduct.
+                  If it ends in admiration alone, it has not gone far enough.
+                </p>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -175,19 +177,13 @@ export function EventsAnimated({
               The cadence is steady enough to shape expectation.
             </h2>
           </Reveal>
-          <div className="mt-12 flex flex-col md:flex-row md:items-start">
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
             {rhythm.map((item, index) => (
-              <div key={item.title} className="flex flex-1 items-start">
-                <Reveal delay={index * 100} className="flex-1 md:pr-8">
-                  <h3 className="vs-subtitle">{item.title}</h3>
-                  <p className="vs-copy mt-3">{item.text}</p>
-                </Reveal>
-                {index < rhythm.length - 1 ? (
-                  <span className="hidden pt-1 text-2xl text-[color:var(--vs-line-strong)] md:block">
-                    &#8594;
-                  </span>
-                ) : null}
-              </div>
+              <Reveal key={item.title} delay={index * 100} className="vs-card vs-card-accent-top h-full">
+                <span className="vs-icon-badge">{index + 1}</span>
+                <h3 className="vs-subtitle mt-6">{item.title}</h3>
+                <p className="vs-copy mt-3">{item.text}</p>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -195,41 +191,43 @@ export function EventsAnimated({
 
       <section className="vs-section vs-section-accent">
         <div className="vs-wrap vs-section-inner-tight">
-          <Reveal className="grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(16rem,0.82fr)]">
-            <div>
-              <p className="vs-label vs-label-on-accent mb-6">Continuity</p>
-              <h2 className="vs-title max-w-[35rem]">The work has already been moving.</h2>
-              {pastSessions.length > 0 ? (
-                <ul className="mt-10 max-w-[40rem] space-y-4">
-                  {pastSessions.map((session, index) => (
-                    <motion.li
-                      key={session}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="flex items-center gap-3 border-t border-white/15 pt-4"
-                    >
-                      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white/15 text-[10px] font-bold">
-                        &#10003;
-                      </span>
-                      <p className="vs-copy text-[0.9rem]">{session}</p>
-                    </motion.li>
-                  ))}
-                </ul>
-              ) : (
-                <p className="vs-copy mt-10 max-w-[38rem]">
-                  The first session is still ahead. This is where its record
-                  will live once it happens.
-                </p>
-              )}
-            </div>
-            <div className="space-y-6 self-end">
-              <p className="vs-meta max-w-[17rem]">
+          <Reveal>
+            <p className="vs-label vs-label-on-accent mb-6">Continuity</p>
+            <h2 className="vs-title max-w-[35rem]">The work has already been moving.</h2>
+          </Reveal>
+
+          <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(16rem,0.8fr)] lg:items-start">
+            {pastSessions.length > 0 ? (
+              <div className="grid gap-4 sm:grid-cols-2">
+                {pastSessions.map((session, index) => (
+                  <motion.div
+                    key={session}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.08 }}
+                    className="vs-card vs-card-on-accent vs-card-accent-top flex items-start gap-3"
+                  >
+                    <span className="vs-icon-badge vs-icon-badge-on-accent !h-8 !w-8 text-[11px]">
+                      &#10003;
+                    </span>
+                    <p className="vs-copy pt-1 text-[0.9rem]">{session}</p>
+                  </motion.div>
+                ))}
+              </div>
+            ) : (
+              <p className="vs-copy max-w-[38rem]">
+                The first session is still ahead. This is where its record
+                will live once it happens.
+              </p>
+            )}
+
+            <div className="vs-card vs-card-on-accent vs-card-accent-top space-y-6">
+              <p className="vs-meta">
                 Entry comes first. The live session is one of the places that
                 entry leads.
               </p>
-              <div className="flex flex-col gap-4 sm:flex-row lg:flex-col lg:items-start">
+              <div className="flex flex-col gap-4">
                 {featured ? (
                   <Link href="#register" className="vs-btn vs-btn-on-accent">
                     {featured.actionLabel}
@@ -240,7 +238,7 @@ export function EventsAnimated({
                 </Link>
               </div>
             </div>
-          </Reveal>
+          </div>
         </div>
       </section>
     </main>

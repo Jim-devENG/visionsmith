@@ -73,8 +73,9 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
             </h2>
           </Reveal>
 
-          <div className="mt-12 max-w-[42rem]">
+          <div className="mt-12 max-w-[46rem]">
             <Checklist
+              onDark
               items={[
                 "Clearer decisions because standards and obligations are made explicit.",
                 "Stronger structure because review and correction have a defined place.",
