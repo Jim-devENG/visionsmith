@@ -14,7 +14,7 @@ export default async function AdminDashboardPage() {
     { label: "Events", count: events[0].count, href: "/admin/events" },
     { label: "Blog posts", count: posts[0].count, href: "/admin/blog" },
     { label: "Event registrations", count: registrations[0].count, href: "/admin/events" },
-    { label: "Join submissions", count: participants[0].count, href: "/admin/account" },
+    { label: "Join submissions", count: participants[0].count, href: "/admin/participants" },
   ];
 
   return (

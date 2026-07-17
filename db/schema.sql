@@ -7,8 +7,12 @@ create table if not exists admins (
   id uuid primary key default gen_random_uuid(),
   email text not null unique,
   password_hash text not null,
-  created_at timestamptz not null default now()
+  created_at timestamptz not null default now(),
+  failed_attempts integer not null default 0,
+  locked_until timestamptz
 );
+alter table admins add column if not exists failed_attempts integer not null default 0;
+alter table admins add column if not exists locked_until timestamptz;
 
 -- ── Events ──────────────────────────────────────────────
 create table if not exists events (
@@ -21,10 +25,12 @@ create table if not exists events (
   action_label text not null default 'Join VisionSmith to attend',
   status text not null default 'upcoming' check (status in ('upcoming', 'past')),
   is_featured boolean not null default false,
+  custom_questions jsonb not null default '[]',
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
 create index if not exists events_status_date_idx on events (status, event_date desc);
+alter table events add column if not exists custom_questions jsonb not null default '[]';
 
 -- ── Event registrations ─────────────────────────────────
 create table if not exists event_registrations (
@@ -33,10 +39,12 @@ create table if not exists event_registrations (
   full_name text not null,
   email text not null,
   note text,
+  custom_answers jsonb not null default '{}',
   created_at timestamptz not null default now(),
   unique (event_id, email)
 );
 create index if not exists event_registrations_event_idx on event_registrations (event_id);
+alter table event_registrations add column if not exists custom_answers jsonb not null default '{}';
 
 -- ── Blog posts ──────────────────────────────────────────
 create table if not exists blog_posts (
@@ -82,3 +90,11 @@ create table if not exists participants (
   source text not null default 'join',
   created_at timestamptz not null default now()
 );
+
+-- ── Rate limiting (login attempts, public form spam) ────
+create table if not exists rate_limit_hits (
+  id bigserial primary key,
+  bucket text not null,
+  created_at timestamptz not null default now()
+);
+create index if not exists rate_limit_hits_bucket_idx on rate_limit_hits (bucket, created_at);

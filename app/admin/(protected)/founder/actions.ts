@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { sql } from "../../../../lib/db";
+import { isSafeHttpUrl, sanitizeRichText } from "../../../../lib/sanitize";
 
 export async function updateFounderPage(formData: FormData) {
   const name = String(formData.get("name") ?? "").trim();
@@ -16,8 +17,8 @@ export async function updateFounderPage(formData: FormData) {
   await sql`
     update founder_page set
       name = ${name},
-      photo_url = ${photoUrl || null},
-      body_html = ${bodyHtml},
+      photo_url = ${photoUrl && isSafeHttpUrl(photoUrl) ? photoUrl : null},
+      body_html = ${sanitizeRichText(bodyHtml)},
       updated_at = now()
     where id = 1
   `;

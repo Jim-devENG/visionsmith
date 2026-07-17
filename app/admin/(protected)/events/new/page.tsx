@@ -1,4 +1,5 @@
 import { AdminShell } from "../../../../../components/admin/AdminShell";
+import { EventQuestionsField } from "../../../../../components/admin/EventQuestionsField";
 import { createEvent } from "../actions";
 
 type NewEventPageProps = {
@@ -66,6 +67,8 @@ export default async function NewEventPage({ searchParams }: NewEventPageProps) 
           <input type="checkbox" name="is_featured" className="h-4 w-4" />
           Feature as the next/current event on the public events page
         </label>
+
+        <EventQuestionsField name="custom_questions" />
 
         <button type="submit" className="vs-btn w-full">
           Create event

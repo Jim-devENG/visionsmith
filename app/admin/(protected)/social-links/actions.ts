@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { sql } from "../../../../lib/db";
+import { isSafeHttpUrl } from "../../../../lib/sanitize";
 
 function encodeError(message: string) {
   return `/admin/social-links?error=${encodeURIComponent(message)}`;
@@ -15,6 +16,10 @@ export async function createSocialLink(formData: FormData) {
 
   if (!platform || !label || !url) {
     redirect(encodeError("Platform, label, and URL are all required."));
+  }
+
+  if (!isSafeHttpUrl(url)) {
+    redirect(encodeError("URL must start with http:// or https://"));
   }
 
   try {
@@ -39,6 +44,10 @@ export async function updateSocialLink(id: string, formData: FormData) {
 
   if (!label || !url) {
     redirect(encodeError("Label and URL are required."));
+  }
+
+  if (!isSafeHttpUrl(url)) {
+    redirect(encodeError("URL must start with http:// or https://"));
   }
 
   await sql`

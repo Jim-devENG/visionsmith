@@ -11,7 +11,7 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
 
   const [featuredRows, pastRows] = await Promise.all([
     sql`
-      select id, title, framing, event_date, event_time, action_label
+      select id, title, framing, event_date, event_time, action_label, custom_questions
       from events
       where is_featured = true and status = 'upcoming'
       order by event_date asc
@@ -34,6 +34,7 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
         event_date: string;
         event_time: string;
         action_label: string;
+        custom_questions: string[];
       }
     | undefined;
 
@@ -55,6 +56,7 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
         }),
         time: row.event_time,
         actionLabel: row.action_label,
+        customQuestions: row.custom_questions ?? [],
       }
     : null;
 

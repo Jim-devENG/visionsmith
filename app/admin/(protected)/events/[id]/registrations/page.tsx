@@ -15,7 +15,7 @@ export default async function EventRegistrationsPage({ params }: RegistrationsPa
   if (!event) notFound();
 
   const registrations = await sql`
-    select full_name, email, note, created_at
+    select full_name, email, note, custom_answers, created_at
     from event_registrations
     where event_id = ${id}
     order by created_at desc
@@ -50,6 +50,16 @@ export default async function EventRegistrationsPage({ params }: RegistrationsPa
               </div>
               <p className="vs-copy mt-1">{reg.email}</p>
               {reg.note ? <p className="vs-meta mt-2">{reg.note}</p> : null}
+              {reg.custom_answers && Object.keys(reg.custom_answers).length > 0 ? (
+                <dl className="mt-3 space-y-1 border-t border-[color:var(--vs-line)] pt-3">
+                  {Object.entries(reg.custom_answers as Record<string, string>).map(([question, answer]) => (
+                    <div key={question}>
+                      <dt className="vs-meta font-semibold">{question}</dt>
+                      <dd className="vs-copy">{answer}</dd>
+                    </div>
+                  ))}
+                </dl>
+              ) : null}
             </div>
           ))
         )}

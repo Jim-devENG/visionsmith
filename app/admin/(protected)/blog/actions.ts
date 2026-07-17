@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { sql } from "../../../../lib/db";
 import { slugify } from "../../../../lib/slug";
+import { isSafeHttpUrl, sanitizeRichText } from "../../../../lib/sanitize";
 
 type PostInput = {
   title: string;
@@ -16,11 +17,12 @@ type PostInput = {
 function readPostInput(formData: FormData): PostInput {
   const coverImageUrl = String(formData.get("cover_image_url") ?? "").trim();
   const excerpt = String(formData.get("excerpt") ?? "").trim();
+  const bodyHtml = String(formData.get("body_html") ?? "").trim();
 
   return {
     title: String(formData.get("title") ?? "").trim(),
-    cover_image_url: coverImageUrl || null,
-    body_html: String(formData.get("body_html") ?? "").trim(),
+    cover_image_url: coverImageUrl && isSafeHttpUrl(coverImageUrl) ? coverImageUrl : null,
+    body_html: sanitizeRichText(bodyHtml),
     excerpt: excerpt ? excerpt.slice(0, 280) : null,
     is_published: formData.get("is_published") === "on",
   };

@@ -2,6 +2,8 @@
 
 import { redirect } from "next/navigation";
 import { sql } from "../../../lib/db";
+import { checkRateLimit, getClientIp } from "../../../lib/rate-limit";
+import { sendNotificationEmail } from "../../../lib/email";
 
 function encodeError(message: string) {
   return `/join?error=${encodeURIComponent(message)}`;
@@ -30,6 +32,12 @@ export async function submitParticipantEntry(formData: FormData) {
     redirect(encodeError("Enter a valid email address."));
   }
 
+  const ip = await getClientIp();
+  const allowed = await checkRateLimit(`join:${ip}`, 5, 60 * 60);
+  if (!allowed) {
+    redirect(encodeError("Too many attempts. Please try again later."));
+  }
+
   const intention = intentionRaw.length > 0 ? intentionRaw.slice(0, 280) : null;
 
   let errorMessage: string | null = null;
@@ -50,6 +58,15 @@ export async function submitParticipantEntry(formData: FormData) {
   if (errorMessage) {
     redirect(encodeError(errorMessage));
   }
+
+  await sendNotificationEmail({
+    subject: "New VisionSmith join submission",
+    lines: [
+      ["Name", fullName],
+      ["Email", email],
+      ["Intention", intention ?? "—"],
+    ],
+  });
 
   redirect("/join/entered");
 }

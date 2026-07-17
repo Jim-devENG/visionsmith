@@ -29,6 +29,7 @@ export type FeaturedEvent = {
   month: string;
   time: string;
   actionLabel: string;
+  customQuestions: string[];
 };
 
 export function EventsAnimated({
@@ -116,6 +117,16 @@ export function EventsAnimated({
                         placeholder="you@example.com"
                         className="vs-input"
                       />
+                      {featured.customQuestions.map((question, index) => (
+                        <input
+                          key={index}
+                          name={`question_${index}`}
+                          type="text"
+                          placeholder={question}
+                          aria-label={question}
+                          className="vs-input"
+                        />
+                      ))}
                       <button type="submit" className="vs-btn w-full">
                         Reserve Your Seat
                       </button>

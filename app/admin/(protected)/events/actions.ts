@@ -13,9 +13,23 @@ type EventInput = {
   action_label: string;
   status: string;
   is_featured: boolean;
+  custom_questions: string[];
 };
 
 function readEventInput(formData: FormData): EventInput {
+  let customQuestions: string[] = [];
+  try {
+    const raw = JSON.parse(String(formData.get("custom_questions") ?? "[]"));
+    if (Array.isArray(raw)) {
+      customQuestions = raw
+        .map((q) => String(q).trim().slice(0, 140))
+        .filter(Boolean)
+        .slice(0, 10);
+    }
+  } catch {
+    customQuestions = [];
+  }
+
   return {
     title: String(formData.get("title") ?? "").trim(),
     framing: String(formData.get("framing") ?? "").trim(),
@@ -25,6 +39,7 @@ function readEventInput(formData: FormData): EventInput {
       String(formData.get("action_label") ?? "").trim() || "Join VisionSmith to attend",
     status: String(formData.get("status") ?? "upcoming"),
     is_featured: formData.get("is_featured") === "on",
+    custom_questions: customQuestions,
   };
 }
 
@@ -42,8 +57,8 @@ export async function createEvent(formData: FormData) {
   }
 
   await sql`
-    insert into events (title, slug, framing, event_date, event_time, action_label, status, is_featured)
-    values (${input.title}, ${slug}, ${input.framing}, ${input.event_date}, ${input.event_time}, ${input.action_label}, ${input.status}, ${input.is_featured})
+    insert into events (title, slug, framing, event_date, event_time, action_label, status, is_featured, custom_questions)
+    values (${input.title}, ${slug}, ${input.framing}, ${input.event_date}, ${input.event_time}, ${input.action_label}, ${input.status}, ${input.is_featured}, ${JSON.stringify(input.custom_questions)}::jsonb)
   `;
 
   revalidatePath("/events");
@@ -70,6 +85,7 @@ export async function updateEvent(id: string, formData: FormData) {
       action_label = ${input.action_label},
       status = ${input.status},
       is_featured = ${input.is_featured},
+      custom_questions = ${JSON.stringify(input.custom_questions)}::jsonb,
       updated_at = now()
     where id = ${id}
   `;

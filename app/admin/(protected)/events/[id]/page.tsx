@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { sql } from "../../../../../lib/db";
 import { AdminShell } from "../../../../../components/admin/AdminShell";
+import { EventQuestionsField } from "../../../../../components/admin/EventQuestionsField";
 import { updateEvent } from "../actions";
 
 type EditEventPageProps = {
@@ -24,6 +25,7 @@ export default async function EditEventPage({ params, searchParams }: EditEventP
         action_label: string;
         status: string;
         is_featured: boolean;
+        custom_questions: string[];
       }
     | undefined;
 
@@ -83,6 +85,8 @@ export default async function EditEventPage({ params, searchParams }: EditEventP
           <input type="checkbox" name="is_featured" className="h-4 w-4" defaultChecked={event.is_featured} />
           Feature as the next/current event on the public events page
         </label>
+
+        <EventQuestionsField name="custom_questions" defaultValue={event.custom_questions} />
 
         <button type="submit" className="vs-btn w-full">
           Save changes
