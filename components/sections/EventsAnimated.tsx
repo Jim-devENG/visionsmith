@@ -4,6 +4,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { EventTicket } from "../ui/EventTicket";
 import { Reveal } from "../ui/Reveal";
+import { ShareButtons } from "./ShareButtons";
+
+const EVENTS_URL = "https://www.visionsmith.world/events";
 
 const rhythm = [
   {
@@ -96,6 +99,9 @@ export function EventsAnimated({
                     To join the session while it's active, your entry into
                     the platform needs to be established first.
                   </p>
+                  <div className="mt-8">
+                    <ShareButtons url={EVENTS_URL} title={featured.title} />
+                  </div>
                 </div>
                 <aside className="space-y-6 lg:border-l lg:border-[color:var(--vs-line)] lg:pl-8">
                   <EventTicket day={featured.day} month={featured.month} time={featured.time} />

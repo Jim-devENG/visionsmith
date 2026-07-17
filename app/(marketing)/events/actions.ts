@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { sql } from "../../../lib/db";
 import { checkRateLimit, getClientIp } from "../../../lib/rate-limit";
-import { sendNotificationEmail } from "../../../lib/email";
+import { sendEventRegistrationConfirmation, sendNotificationEmail } from "../../../lib/email";
 
 function encodeError(message: string) {
   return `/events?error=${encodeURIComponent(message)}#register`;
@@ -37,8 +37,20 @@ export async function registerForEvent(eventId: string, formData: FormData) {
     redirect(encodeError("Too many attempts. Please try again later."));
   }
 
-  const eventRows = await sql`select title, custom_questions from events where id = ${eventId}`;
-  const event = eventRows[0] as { title: string; custom_questions: string[] } | undefined;
+  const eventRows = await sql`
+    select title, event_date, event_time, custom_questions, redirect_label, redirect_url
+    from events where id = ${eventId}
+  `;
+  const event = eventRows[0] as
+    | {
+        title: string;
+        event_date: string;
+        event_time: string;
+        custom_questions: string[];
+        redirect_label: string | null;
+        redirect_url: string | null;
+      }
+    | undefined;
   if (!event) {
     redirect(encodeError("This event is no longer available."));
   }
@@ -70,6 +82,13 @@ export async function registerForEvent(eventId: string, formData: FormData) {
     redirect(encodeError(errorMessage));
   }
 
+  const eventWhen = `${new Date(event.event_date).toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  })} · ${event.event_time}`;
+
   await sendNotificationEmail({
     subject: `New event registration: ${event.title}`,
     lines: [
@@ -79,6 +98,15 @@ export async function registerForEvent(eventId: string, formData: FormData) {
       ["Note", note ?? "—"],
       ...Object.entries(answers),
     ],
+  });
+
+  await sendEventRegistrationConfirmation({
+    to: email,
+    fullName,
+    eventTitle: event.title,
+    eventWhen,
+    redirectLabel: event.redirect_label,
+    redirectUrl: event.redirect_url,
   });
 
   redirect("/events?registered=1#register");
