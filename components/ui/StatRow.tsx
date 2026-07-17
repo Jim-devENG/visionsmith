@@ -2,7 +2,7 @@ import { AnimatedCounter } from "./AnimatedCounter";
 import { Reveal } from "./Reveal";
 
 const stats = [
-  { value: 300, suffix: "+", label: "People in governed practice" },
+  { value: 300, suffix: "+", label: "Builders in practice" },
   { value: 48, suffix: "", label: "Live sessions held" },
   { value: 92, suffix: "%", label: "Return after first session" },
   { value: 4.8, decimals: 1, suffix: "/5", label: "Session clarity rating" },

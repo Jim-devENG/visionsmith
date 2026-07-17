@@ -6,7 +6,7 @@ const details = [
   { label: "Format", text: "60 minutes. Live. Structured." },
   {
     label: "Examines",
-    text: "Standards, review cadence, obligation design.",
+    text: "Pattern-finding, architecture, and the thinking behind a build.",
   },
   {
     label: "Suitable if",
@@ -22,14 +22,14 @@ export function CurrentFocus() {
           <Reveal>
             <p className="vs-label mb-5">Live working session</p>
             <h2 className="vs-title max-w-[36rem]">
-              Current session: establishing a personal operating standard
+              Current session: finding the pattern before the build begins
             </h2>
             <p className="vs-copy mt-6 max-w-[36rem]">
-              This session walks through the sequence directly: defining what
-              governs, setting review intervals, making obligations visible,
-              and correcting drift before it compounds. The point is to see
-              the architecture in use and decide whether you want to work
-              inside it.
+              This session walks through the method directly: naming the
+              real problem, finding the structure inside it, and sketching
+              the architecture before a single line gets built. The point is
+              to see the thinking in motion and decide whether you want to
+              build this way.
             </p>
 
             <dl className="mt-8 grid gap-6 sm:grid-cols-3">

@@ -3,16 +3,16 @@
 import { motion } from "framer-motion";
 
 const rings = [
-  { r: 88, label: "Values" },
-  { r: 66, label: "Standards" },
-  { r: 44, label: "Review" },
-  { r: 22, label: "Execution" },
+  { r: 88, label: "Pattern" },
+  { r: 66, label: "Structure" },
+  { r: 44, label: "Thinking" },
+  { r: 22, label: "Building" },
 ];
 
 export function FrameRings() {
   return (
     <div className="flex items-center justify-center py-6">
-      <svg viewBox="0 0 200 200" className="h-auto w-full max-w-[15rem]" role="img" aria-label="Values, standards, review, and execution converging into one governed frame">
+      <svg viewBox="0 0 200 200" className="h-auto w-full max-w-[15rem]" role="img" aria-label="Pattern, structure, thinking, and building converging into one frame">
         <g transform="translate(100,100)">
           {rings.map((ring, index) => (
             <motion.circle

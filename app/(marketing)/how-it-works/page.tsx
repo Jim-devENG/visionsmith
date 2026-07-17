@@ -5,50 +5,50 @@ import { Reveal } from "../../../components/ui/Reveal";
 const progression = [
   {
     label: "01",
-    title: "Name what governs",
-    text: "The work begins by making standards explicit. A person defines the principles, boundaries, and obligations that should remain intact when pressure, convenience, or distraction start negotiating.",
+    title: "Find the pattern",
+    text: "The work begins by naming the structure underneath the chaos — the few principles and constraints that actually govern the problem, before pressure or convenience start negotiating them away.",
   },
   {
     label: "02",
-    title: "Convert standards into structure",
-    text: "Values are not left as abstract beliefs. They are translated into review intervals, recurring questions, commitments, and visible points of decision so conduct can actually be directed.",
+    title: "Build the architecture",
+    text: "A clear pattern isn't left as an abstract idea. It gets translated into sequence, dependency, and decision points — a structure specific enough to actually build from.",
   },
   {
     label: "03",
-    title: "Inspect conduct without performance",
-    text: "Execution is examined through evidence rather than self-description. What was done, avoided, delayed, or rationalized becomes legible enough to correct.",
+    title: "Build without illusion",
+    text: "Construction gets examined through the thing itself, not the story about it. What actually got built — and what got quietly skipped — becomes visible enough to fix.",
   },
   {
     label: "04",
-    title: "Correct early and repeat",
-    text: "The aim is not perfect behavior. The aim is quicker recognition, cleaner correction, and less drift. Over time, this turns review into governance rather than reflection alone.",
+    title: "Refine and repeat",
+    text: "The aim isn't a perfect first build. The aim is faster recognition of what's off and cleaner correction. Over time, this turns thinking into a discipline instead of a one-time burst of insight.",
   },
 ];
 
 const sequence = [
   {
-    title: "Standard",
-    text: "What must remain true, even when circumstances argue against it.",
+    title: "Pattern",
+    text: "The structure that must hold true, even when circumstances argue for cutting corners.",
   },
   {
     title: "Rhythm",
-    text: "When review happens, how often correction occurs, and where commitments are revisited.",
+    text: "When thinking happens, how often the build gets reviewed against the pattern, and where course-correction is built in.",
   },
   {
     title: "Record",
-    text: "A visible account of actions, omissions, and repeated points of weakness.",
+    text: "A visible account of what was built, what was skipped, and where the same mistake keeps showing up.",
   },
   {
     title: "Adjustment",
-    text: "Specific corrections made before drift becomes identity.",
+    text: "Specific corrections made before a bad habit becomes how you build.",
   },
 ];
 
 const effects = [
-  "Decisions become less theatrical because the standard is already set.",
-  "Review stops being emotional processing and becomes an instrument for correction.",
-  "Execution improves because obligations are visible before the week gets away from you.",
-  "Self-trust becomes more earned because your record can confirm it.",
+  "Decisions get faster because the pattern is already named.",
+  "Review stops being a feelings check and becomes an instrument for building better.",
+  "Execution improves because the architecture is visible before the build starts drifting.",
+  "Confidence becomes earned instead of assumed, because the record can actually confirm it.",
 ];
 
 export default function HowItWorksPage() {
@@ -58,23 +58,23 @@ export default function HowItWorksPage() {
         <div className="vs-wrap vs-section-inner-open">
           <Reveal className="grid gap-14 lg:grid-cols-[minmax(0,2.05fr)_minmax(15rem,0.85fr)] lg:items-end">
             <div>
-              <p className="vs-label mb-8">From intention to execution</p>
+              <p className="vs-label mb-8">From idea to architecture</p>
               <h1 className="vs-display max-w-[36rem]">
-                Turn intention into structure.
+                Learn to think like a builder.
               </h1>
               <p className="vs-copy mt-10 max-w-[40rem]">
-                Most people do not fail because they lack ideas. They fail
-                because their standards remain unformed, their review is
-                irregular, and their conduct is left uninspected until drift has
-                already taken hold.
+                Most builders don't fail for lack of ideas. They fail because
+                the idea never gets a real architecture — the pattern
+                underneath it stays vague, and the build inherits that
+                vagueness.
               </p>
             </div>
 
             <div className="vs-card">
               <p className="vs-label vs-label-alt mb-4">Central premise</p>
               <p className="vs-meta">
-                The platform does not try to keep you motivated. It gives you a
-                way to govern what happens after motivation fades.
+                VisionSmith doesn't try to keep you motivated. It gives you a
+                way to think clearly after the motivation is gone.
               </p>
             </div>
           </Reveal>
@@ -84,14 +84,15 @@ export default function HowItWorksPage() {
       <section className="vs-section vs-tint">
         <div className="vs-wrap vs-section-inner-tight">
           <Reveal className="max-w-[38rem]">
-            <p className="vs-label mb-6">User progression</p>
+            <p className="vs-label mb-6">The method</p>
             <h2 className="vs-title">
-              The movement is deliberate: define, structure, inspect, correct.
+              The sequence is deliberate: find the pattern, build the
+              architecture, construct, refine.
             </h2>
             <p className="vs-copy mt-6">
-              Each step depends on the last. Without standards, structure is
-              empty. Without structure, review is sporadic. Without review,
-              correction arrives too late.
+              Each step depends on the last. Without a pattern, architecture
+              is guesswork. Without architecture, building is improvisation.
+              Without refinement, good ideas stay half-built.
             </p>
           </Reveal>
 
@@ -112,7 +113,7 @@ export default function HowItWorksPage() {
       <section className="vs-section vs-section-dark">
         <div className="vs-wrap vs-section-inner">
           <Reveal className="max-w-[32rem]">
-            <p className="vs-label vs-label-on-dark mb-6">Working sequence</p>
+            <p className="vs-label vs-label-on-dark mb-6">The frame</p>
             <h2 className="vs-title">
               A practical frame, not a vague philosophy.
             </h2>
@@ -149,20 +150,20 @@ export default function HowItWorksPage() {
           <Reveal className="vs-card vs-card-on-accent mx-auto max-w-[40rem] text-center">
             <p className="vs-label vs-label-on-accent mx-auto mb-6">Next action</p>
             <h2 className="vs-title">
-              If this framework reads as necessary rather than severe,
-              continue to join.
+              If this reads as necessary rather than abstract, the next step
+              is direct.
             </h2>
             <p className="vs-copy mx-auto mt-6 max-w-[32rem]">
-              The next step is not to admire the method. It is to decide
-              whether you want to work inside it with enough seriousness for
-              it to change your conduct.
+              The next step isn't to admire the method. It's to decide
+              whether you want to think and build this way, seriously enough
+              for it to change what you make.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
               <Link href="/join" className="vs-btn vs-btn-on-accent">
-                Continue to join
+                Build with Clarity
               </Link>
               <Link href="/events" className="vs-btn vs-btn-ghost-on-color">
-                Check current events
+                Join a Live Session
               </Link>
             </div>
           </Reveal>

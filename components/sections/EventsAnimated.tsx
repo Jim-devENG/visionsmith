@@ -8,15 +8,15 @@ import { Reveal } from "../ui/Reveal";
 const rhythm = [
   {
     title: "Monthly live sessions",
-    text: "One session at a time, built around a specific point of correction: review, standards, execution, attention, or drift.",
+    text: "One session at a time, built around a specific point in the thinking process: pattern-finding, architecture, construction, or refinement.",
   },
   {
     title: "Ongoing prompts and reflection",
-    text: "Between sessions, participation continues through prompts and structured questions that keep the work from collapsing into occasional inspiration.",
+    text: "Between sessions, participation continues through prompts and structured questions that keep the thinking active instead of collapsing into occasional inspiration.",
   },
   {
     title: "Community movement",
-    text: "The environment stays active through shared practice, not constant noise. The emphasis is continuity, not chatter.",
+    text: "The environment stays active through shared practice, not constant noise. The emphasis is continuity of thinking, not chatter.",
   },
 ];
 
@@ -55,16 +55,17 @@ export function EventsAnimated({
                 Where the work happens live.
               </h1>
               <p className="vs-copy mt-10 max-w-[40rem]">
-                VisionSmith is not built around isolated content drops. The live
-                sessions mark the platform's active rhythm: places where review,
-                correction, and renewed structure happen in real time.
+                VisionSmith isn't built around isolated content drops. The
+                live sessions mark the platform's active rhythm — places
+                where builders think through real problems, in real time.
               </p>
             </div>
             <div className="vs-card vs-card-accent-top">
               <p className="vs-label vs-label-alt mb-4">What this page is for</p>
               <p className="vs-meta">
-                This is the current edge of activity. If you want to enter the
-                work as it is happening now, begin with platform entry.
+                This is the current edge of activity. If you want to think
+                alongside builders as it's happening, start with platform
+                entry.
               </p>
             </div>
           </Reveal>
@@ -82,8 +83,8 @@ export function EventsAnimated({
                   <h2 className="vs-title max-w-[36rem]">{featured.title}</h2>
                   <p className="vs-copy mt-6 max-w-[38rem]">{featured.framing}</p>
                   <p className="vs-copy mt-6 max-w-[38rem]">
-                    To meet the work while it is active, once your entry into the
-                    platform has been established.
+                    To join the session while it's active, your entry into
+                    the platform needs to be established first.
                   </p>
                 </div>
                 <aside className="space-y-6 lg:border-l lg:border-[color:var(--vs-line)] lg:pl-8">
@@ -116,13 +117,13 @@ export function EventsAnimated({
                         className="vs-input"
                       />
                       <button type="submit" className="vs-btn w-full">
-                        Register for this session
+                        Reserve Your Seat
                       </button>
                     </form>
                   ) : null}
 
                   <Link href="/join" className="vs-btn vs-btn-subtle w-full">
-                    Join VisionSmith
+                    Build with Clarity
                   </Link>
                 </aside>
               </div>
@@ -133,7 +134,7 @@ export function EventsAnimated({
                   to be notified the moment one is announced.
                 </p>
                 <Link href="/join" className="vs-btn mt-6 inline-flex">
-                  Join VisionSmith
+                  Build with Clarity
                 </Link>
               </div>
             )}
@@ -148,20 +149,22 @@ export function EventsAnimated({
               <div>
                 <p className="vs-label vs-label-on-dark mb-6">Context of participation</p>
                 <h2 className="vs-title max-w-[28rem]">
-                  Attendance matters only if it returns to structure afterward.
+                  A session only matters if it changes how you build
+                  afterward.
                 </h2>
               </div>
               <div className="space-y-6 max-w-[40rem] lg:border-l lg:border-white/10 lg:pl-8">
                 <p className="vs-copy">
-                  In VisionSmith, joining the platform and attending a session
-                  are not the same act. Joining establishes participation in
-                  the environment itself. Events are live points inside that
-                  environment: places to return, re-examine standards, and
-                  reset direction in company with the current rhythm.
+                  In VisionSmith, joining the platform and attending a
+                  session aren't the same act. Joining establishes your
+                  place inside the environment itself. Events are live
+                  points inside that environment — places to return,
+                  re-examine your thinking, and reset direction alongside
+                  other builders.
                 </p>
                 <p className="vs-copy">
-                  A session is useful when it alters the next week of conduct.
-                  If it ends in admiration alone, it has not gone far enough.
+                  A session is useful when it changes what you build next.
+                  If it ends in admiration alone, it hasn't gone far enough.
                 </p>
               </div>
             </div>
@@ -234,7 +237,7 @@ export function EventsAnimated({
                   </Link>
                 ) : null}
                 <Link href="/join" className="vs-btn vs-btn-ghost-on-color">
-                  Enter the platform
+                  Build with Clarity
                 </Link>
               </div>
             </div>

@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 
 const notThis = [
-  "A place to accumulate better language without changing conduct.",
-  "Built to keep people emotionally activated or endlessly inspired.",
-  "Interested in performance, identity construction, or public virtue.",
+  "A place to collect better language without ever building anything.",
+  "Built to keep you inspired instead of clear.",
+  "Interested in performance, personal branding, or borrowed confidence.",
 ];
 
 export function Positioning() {
@@ -43,13 +43,14 @@ export function Positioning() {
         >
           <p className="vs-label vs-label-on-accent mb-8">What it is instead</p>
           <h2 className="vs-title max-w-[26rem]">
-            A place to make inner governance explicit.
+            A place to make your thinking visible.
           </h2>
           <p className="vs-copy mt-6 max-w-[28rem]">
-            The point is to close the distance between stated values and
-            repeated behavior. VisionSmith gives that work a frame: not loose
-            journaling, not performance theater, but disciplined inspection —
-            built for people who would rather be corrected than flattered.
+            The point is to close the distance between a good idea and a
+            well-built thing. VisionSmith gives that work a frame: not loose
+            brainstorming, not performance theater, but structured thinking —
+            built for builders who would rather be challenged than agreed
+            with.
           </p>
         </motion.div>
       </div>

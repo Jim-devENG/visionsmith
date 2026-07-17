@@ -34,11 +34,11 @@ export default async function BlogIndexPage() {
       <section className="vs-section vs-surface">
         <div className="vs-wrap vs-section-inner-open">
           <Reveal>
-            <p className="vs-label mb-8">Writing</p>
-            <h1 className="vs-display max-w-[36rem]">Notes from the work.</h1>
+            <p className="vs-label mb-8">Field notes</p>
+            <h1 className="vs-display max-w-[36rem]">Thinking, written down.</h1>
             <p className="vs-copy mt-8 max-w-[36rem]">
-              Short pieces on standards, review, and the discipline of staying
-              governed when it would be easier not to be.
+              Short pieces on pattern, structure, and the discipline of
+              thinking clearly before you build.
             </p>
           </Reveal>
         </div>
@@ -103,22 +103,22 @@ export default async function BlogIndexPage() {
 
       <section className="vs-section vs-section-dark relative overflow-hidden">
         <div className="pt-14 text-white/[0.06]">
-          <Marquee items={["STANDARDS", "REVIEW", "EXECUTION", "CORRECTION"]} />
+          <Marquee items={["PATTERN", "STRUCTURE", "THINKING", "BUILDING"]} />
         </div>
         <div className="vs-wrap relative vs-section-inner-tight text-center">
           <Reveal className="mx-auto max-w-xl">
             <p className="vs-label vs-label-on-dark mx-auto mb-6">Path forward</p>
             <h2 className="vs-title">Reading is not the practice.</h2>
             <p className="vs-copy mx-auto mt-6 max-w-lg">
-              Notes are useful when they change next week's conduct. If they
+              Notes are useful when they change what you build next. If they
               don't, the next step is the platform itself.
             </p>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
               <Link href="/join" className="vs-btn vs-btn-on-dark">
-                Enter VisionSmith
+                Build with Clarity
               </Link>
               <Link href="/how-it-works" className="vs-btn vs-btn-ghost-on-color">
-                Read the framework
+                Explore the Pattern
               </Link>
             </div>
           </Reveal>

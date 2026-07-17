@@ -9,7 +9,7 @@ export function NextStep() {
   return (
     <section className="vs-section vs-section-dark relative overflow-hidden">
       <div className="pt-14 text-white/[0.06]">
-        <Marquee items={["STANDARDS", "REVIEW", "EXECUTION", "CORRECTION"]} />
+        <Marquee items={["PATTERN", "STRUCTURE", "THINKING", "BUILDING"]} />
       </div>
 
       <div className="vs-wrap relative vs-section-inner-tight text-center">
@@ -21,21 +21,22 @@ export function NextStep() {
           className="mx-auto max-w-2xl"
         >
           <p className="vs-label vs-label-on-dark mx-auto mb-6">Path forward</p>
-          <h2 className="vs-title">Progression matters more than persuasion.</h2>
+          <h2 className="vs-title">Clarity outlasts motivation.</h2>
           <p className="vs-copy mx-auto mt-6 max-w-xl">
-            First understand the frame. Then test whether you can work inside
-            it. Only then choose the level of structure you want around you.
+            First understand the pattern. Then test whether you can think
+            this way. Only then decide how much structure you want around
+            your own building.
           </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
             <Magnetic>
               <Link href="/join" className="vs-btn vs-btn-on-dark">
-                Enter VisionSmith
+                Build with Clarity
               </Link>
             </Magnetic>
             <Magnetic>
               <Link href="/how-it-works" className="vs-btn vs-btn-ghost-on-color">
-                Read the framework
+                Explore the Pattern
               </Link>
             </Magnetic>
           </div>

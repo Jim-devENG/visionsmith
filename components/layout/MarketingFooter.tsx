@@ -40,7 +40,7 @@ export async function MarketingFooter() {
               className="h-20 w-auto"
             />
             <p className="mt-5 text-[15px] leading-7 text-white/60">
-              A governed environment for standards, review, and execution.
+              Where builders learn to think before they build.
             </p>
           </div>
 

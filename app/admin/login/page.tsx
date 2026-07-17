@@ -9,7 +9,7 @@ export default async function AdminLoginPage({ searchParams }: LoginPageProps) {
   const error = params?.error;
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[color:var(--vs-bg)] px-6">
+    <main className="vs-admin flex min-h-screen items-center justify-center bg-[color:var(--vs-bg)] px-6">
       <div className="w-full max-w-[24rem]">
         <p className="vs-label mb-6">VisionSmith</p>
         <h1 className="vs-title">Admin sign in</h1>

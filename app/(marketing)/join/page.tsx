@@ -19,11 +19,12 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
         <Reveal className="vs-wrap vs-section-inner-open">
           <p className="vs-label mb-8">Entry</p>
           <h1 className="vs-display max-w-[34rem]">
-            Live under a clearer standard.
+            Start thinking with more clarity.
           </h1>
           <p className="vs-copy mt-10 max-w-[40rem]">
-            This is where interest becomes participation. Enter only if you
-            intend to let structure shape conduct, not only language.
+            This is where interest becomes practice. Join only if you intend
+            to let real thinking shape what you build — not just how you
+            talk about it.
           </p>
         </Reveal>
       </section>
@@ -33,7 +34,7 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
           <Reveal className="max-w-[36rem]">
             <p className="vs-label mb-6">What stepping in means</p>
             <h2 className="vs-title">
-              The environment asks for steadiness, not display.
+              This is a place for builders, not an audience.
             </h2>
           </Reveal>
 
@@ -41,23 +42,24 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
             <Reveal className="border-t border-[color:var(--vs-line-strong)] pt-6">
               <p className="vs-label vs-label-alt mb-3">Expectation</p>
               <p className="vs-copy">
-                You are expected to approach the work honestly, to name things
-                plainly, and to let structure challenge convenience.
+                You're expected to approach your own thinking honestly, name
+                problems plainly, and let structure challenge what's
+                convenient.
               </p>
             </Reveal>
             <Reveal delay={100} className="border-t border-[color:var(--vs-line-strong)] pt-6">
               <p className="vs-label vs-label-alt mb-3">Engagement</p>
               <p className="vs-copy">
                 Participation is active. The value comes from returning,
-                reviewing, correcting, and keeping your own record in view.
+                refining your thinking, and building in the open.
               </p>
             </Reveal>
             <Reveal delay={200} className="border-t border-[color:var(--vs-line-strong)] pt-6">
               <p className="vs-label vs-label-alt mb-3">Environment</p>
               <p className="vs-copy">
                 The space is quieter than most online environments and less
-                interested in performance. It is built for sustained
-                responsibility.
+                interested in performance. It's built for people doing real,
+                sustained work.
               </p>
             </Reveal>
           </div>
@@ -69,7 +71,7 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
           <Reveal className="max-w-[36rem]">
             <p className="vs-label vs-label-on-dark mb-6">What you gain</p>
             <h2 className="vs-title">
-              Better conditions for clear judgment and consistent execution.
+              Better conditions for clear thinking and real building.
             </h2>
           </Reveal>
 
@@ -77,10 +79,10 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
             <Checklist
               onDark
               items={[
-                "Clearer decisions because standards and obligations are made explicit.",
-                "Stronger structure because review and correction have a defined place.",
-                "Greater consistency because commitments stay visible in one environment.",
-                "A serious atmosphere where discipline is treated as ordinary practice.",
+                "Clearer decisions because the pattern behind the problem is made explicit.",
+                "Stronger architecture because thinking and refinement have a defined place.",
+                "Greater consistency because your work-in-progress stays visible in one place.",
+                "A serious atmosphere where clear thinking is ordinary practice, not a special occasion.",
               ]}
             />
           </div>
@@ -93,11 +95,11 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
             <div className="max-w-[22rem]">
               <p className="vs-label vs-label-alt mb-6">Enter</p>
               <h2 className="vs-title">
-                Leave a direct line of contact. Entry stays simple.
+                Leave a direct line of contact. Joining stays simple.
               </h2>
               <p className="vs-copy mt-8">
-                Event participation follows this same entry path. Join once,
-                then move inside the platform rhythm.
+                Event participation follows this same path. Join once, then
+                move inside the rhythm of the platform.
               </p>
               <Stamp label="Entry recorded" />
             </div>
@@ -153,12 +155,12 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
                     rows={4}
                     maxLength={280}
                     className="vs-textarea mt-3"
-                    placeholder="State the reason you are entering now."
+                    placeholder="State what you're building or thinking through right now."
                   />
                 </div>
 
                 <button type="submit" className="vs-btn w-full">
-                  Enter VisionSmith
+                  Build with Clarity
                 </button>
               </div>
             </form>
@@ -169,8 +171,8 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
       <section className="vs-section vs-section-accent">
         <div className="vs-wrap vs-section-inner-tight">
           <p className="vs-title max-w-[40rem]">
-            Enter only if you intend to let the structure require something of
-            you.
+            Join only if you intend to let real thinking change what you
+            build.
           </p>
         </div>
       </section>

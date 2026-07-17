@@ -5,30 +5,30 @@ import { Reveal } from "../../../components/ui/Reveal";
 import { Stamp } from "../../../components/ui/Stamp";
 
 const refusals = [
-  "It is not a place to accumulate better language without changing conduct.",
-  "It is not built to keep people emotionally activated or endlessly inspired.",
-  "It is not interested in performance, identity construction, or public virtue.",
+  "It is not a place to collect better language without ever building anything.",
+  "It is not built to keep you inspired instead of clear.",
+  "It is not interested in performance, personal branding, or borrowed confidence.",
 ];
 
-const standards = [
+const principles = [
   {
-    title: "Clarity before motion",
-    text: "Direction is set before action multiplies. VisionSmith assumes that ungoverned activity is often a refined form of avoidance.",
+    title: "Clarity before construction",
+    text: "Direction gets set before effort multiplies. VisionSmith assumes that motion without a pattern is often just a more sophisticated form of avoidance.",
   },
   {
-    title: "Structure over mood",
-    text: "The platform is designed around repeatable standards, not temporary states. What matters should remain legible when enthusiasm disappears.",
+    title: "Structure over inspiration",
+    text: "VisionSmith is built around repeatable thinking, not temporary bursts of motivation. What matters should stay legible after the excitement fades.",
   },
   {
-    title: "Evidence over self-story",
-    text: "A person is not assessed by intention alone. Conduct, omissions, review, and correction carry more weight than explanation.",
+    title: "The build over the pitch",
+    text: "A builder isn't judged by the story they tell about their idea. What gets built, and how clearly it was thought through, carries more weight than explanation.",
   },
 ];
 
 const fit = [
-  "People carrying responsibility who need a stronger interior standard than productivity culture can offer.",
-  "People willing to examine their own conduct without theatrics, branding, or self-protection.",
-  "People who do not need more content, but a place where thought, review, and execution answer to the same frame.",
+  "Founders, creators, and leaders building something that has to hold up under real weight — a company, a product, an institution, a movement.",
+  "People willing to examine their own thinking honestly, without performance, branding, or self-protection.",
+  "People who don't need more content, but a place where thinking and building finally answer to the same standard of clarity.",
 ];
 
 export default async function AboutPage() {
@@ -41,15 +41,16 @@ export default async function AboutPage() {
         <div className="vs-wrap vs-section-inner-open">
           <Reveal className="grid gap-14 lg:grid-cols-[minmax(0,2.05fr)_minmax(15rem,0.85fr)] lg:items-end">
             <div>
-              <p className="vs-label mb-8">What this platform is</p>
+              <p className="vs-label mb-8">What VisionSmith is</p>
               <h1 className="vs-display max-w-[36rem]">
-                Your inner government, made explicit.
+                The home of a way of thinking.
               </h1>
               <p className="vs-copy mt-10 max-w-[40rem]">
-                It exists for the disciplined work of becoming more coherent:
-                bringing values, standards, review, and execution into one
-                governed frame so a person can be answered by their conduct, not
-                only by what they mean well.
+                VisionSmith exists for builders — the people creating
+                companies, products, ministries, movements, and ideas that
+                need to hold up under real weight. We believe clarity has to
+                come before construction, and that every serious thing gets
+                built twice: first in thought, then in reality.
               </p>
             </div>
 
@@ -57,8 +58,8 @@ export default async function AboutPage() {
               <p className="vs-label vs-label-alt mb-2">Plainly stated</p>
               <FrameRings />
               <p className="vs-meta mt-2 text-center">
-                This is not a platform for intensity. It is a platform for
-                ordered responsibility.
+                This is not a platform for motivation. It is a home for the
+                thinking that precedes real building.
               </p>
             </div>
           </Reveal>
@@ -72,15 +73,15 @@ export default async function AboutPage() {
               <div>
                 <p className="vs-label mb-6">Why it exists</p>
                 <h2 className="vs-title max-w-[40rem]">
-                  Because many serious people are not lacking desire. They are
-                  lacking an ordered way to live under what they already know.
+                  Because most builders are not short on ideas. They are
+                  short on a disciplined way to think before they build them.
                 </h2>
               </div>
               <p className="vs-copy max-w-sm lg:border-l lg:border-[color:var(--vs-line)] lg:pl-8">
-                VisionSmith exists to reduce the distance between recognition
-                and practice. Not by supplying more stimulation, but by giving
-                a person somewhere to return when they need honesty, order,
-                and correction.
+                VisionSmith exists to close the distance between a good idea
+                and a well-built thing. Not by supplying more content, but by
+                giving builders a place to return to when they need to think
+                clearly before they act.
               </p>
             </div>
           </Reveal>
@@ -110,14 +111,14 @@ export default async function AboutPage() {
       <section className="vs-section vs-surface">
         <div className="vs-wrap vs-section-inner">
           <Reveal className="max-w-[36rem]">
-            <p className="vs-label mb-6">Standards behind it</p>
+            <p className="vs-label mb-6">First principles</p>
             <h2 className="vs-title max-w-[28rem]">
-              The philosophy is practical: what governs a life should be
-              visible enough to withstand pressure.
+              The philosophy is practical: thinking should be visible enough
+              to survive contact with a real build.
             </h2>
           </Reveal>
           <div className="relative mt-12 max-w-[40rem] space-y-10 border-l border-[color:var(--vs-line-strong)] pl-8">
-            {standards.map((item, index) => (
+            {principles.map((item, index) => (
               <Reveal key={item.title} delay={index * 120} className="relative">
                 <span className="absolute -left-[2.55rem] top-0 flex h-8 w-8 items-center justify-center rounded-full bg-[color:var(--vs-surface)] text-[12px] font-bold text-[color:var(--vs-accent-strong)] ring-4 ring-[color:var(--vs-accent-soft)]">
                   0{index + 1}
@@ -143,7 +144,7 @@ export default async function AboutPage() {
                 />
               ) : (
                 <p className="vs-copy mt-6 max-w-[34rem]">
-                  The person behind the standard VisionSmith holds everyone to,
+                  The person behind the way of thinking VisionSmith teaches,
                   starting with itself.
                 </p>
               )}
@@ -168,8 +169,8 @@ export default async function AboutPage() {
           <Reveal className="max-w-[40rem]">
             <p className="vs-label vs-label-on-accent mb-6">Built for</p>
             <h2 className="vs-title max-w-[38rem]">
-              VisionSmith is built for the person who would rather be
-              corrected than flattered.
+              VisionSmith is built for people who are already building — and
+              want to think more clearly while they do it.
             </h2>
           </Reveal>
 
@@ -184,11 +185,11 @@ export default async function AboutPage() {
 
           <Reveal delay={300} className="mt-12 flex flex-col items-start gap-6 border-t border-white/15 pt-10 sm:flex-row sm:items-center sm:justify-between">
             <p className="vs-copy max-w-[28rem]">
-              If that description feels clarifying rather than severe, the
-              next step is direct.
+              If that sounds like the way you already think, the next step
+              is direct.
             </p>
             <Link href="/join" className="vs-btn vs-btn-on-accent shrink-0">
-              Continue to join
+              Build with Clarity
             </Link>
           </Reveal>
         </div>

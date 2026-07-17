@@ -63,7 +63,7 @@ export function MarketingHeader() {
         </nav>
 
         <Link href="/join" className="vs-btn shrink-0 !py-2.5 !px-5 text-[13px]">
-          Join VisionSmith
+          Build with Clarity
         </Link>
       </div>
     </header>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ChaosField } from "../ui/ChaosField";
 import { Magnetic } from "../ui/Magnetic";
 
-const headline = "Govern your weeks.";
+const headline = "Every chaos has a pattern.";
 
 const container = {
   hidden: {},
@@ -38,7 +38,7 @@ export function Hero() {
           transition={{ duration: 0.6 }}
           className="vs-label vs-label-on-dark mb-8"
         >
-          Direction before activity
+          Clarity before construction
         </motion.p>
 
         <h1 className="vs-display max-w-[52rem] text-white" aria-label={headline}>
@@ -65,10 +65,10 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.55 }}
           className="vs-copy mt-8 max-w-[38rem]"
         >
-          VisionSmith is a platform for serious people who are no longer
-          asking for more ideas. The work here is to make standards visible,
-          apply them under pressure, and keep review close enough to
-          execution that drift is caught early.
+          VisionSmith exists for builders who no longer need more
+          inspiration. The work here is to find the structure inside
+          complexity, think clearly before acting, and build with an
+          architecture strong enough to hold what you're making.
         </motion.p>
 
         <motion.div
@@ -79,12 +79,12 @@ export function Hero() {
         >
           <Magnetic>
             <Link href="/join" className="vs-btn vs-btn-on-dark">
-              Enter VisionSmith
+              Build with Clarity
             </Link>
           </Magnetic>
           <Magnetic>
             <Link href="/how-it-works" className="vs-btn vs-btn-ghost-on-color">
-              Learn how it works
+              Explore the Pattern
             </Link>
           </Magnetic>
         </motion.div>
@@ -99,7 +99,7 @@ export function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--vs-accent-2)] opacity-60" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-[color:var(--vs-accent-2)]" />
           </span>
-          Live cohort currently in session
+          Live session in progress
         </motion.div>
       </div>
     </section>

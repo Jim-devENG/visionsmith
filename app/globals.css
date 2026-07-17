@@ -697,6 +697,175 @@ label {
   height: auto;
 }
 
+/* ==========================================================================
+   Admin dashboard — dense, minimal, premium internal tool.
+   Scoped entirely under .vs-admin so it re-skins the same vs-* primitives
+   used on the marketing site without touching the marketing site itself.
+   ========================================================================== */
+.vs-admin {
+  font-size: 14px;
+}
+
+.vs-admin .vs-card {
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--vs-radius-sm);
+  box-shadow: none;
+  border: 1px solid var(--vs-line);
+  transition: border-color 0.15s var(--vs-ease), background-color 0.15s var(--vs-ease);
+}
+
+.vs-admin .vs-card:hover {
+  transform: none;
+  border-color: var(--vs-line-strong);
+  box-shadow: none;
+}
+
+.vs-admin a.vs-card:hover {
+  background: var(--vs-surface-2);
+}
+
+.vs-admin .vs-card-accent-top::before {
+  content: none;
+}
+
+.vs-admin .vs-display,
+.vs-admin .vs-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.vs-admin .vs-subtitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.vs-admin .vs-label {
+  background: transparent;
+  color: var(--vs-subtle);
+  padding: 0;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.vs-admin .vs-label-alt {
+  background: var(--vs-surface-2);
+  color: var(--vs-ink-soft);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--vs-radius-sm);
+}
+
+.vs-admin .vs-btn {
+  padding: 0.6rem 1.15rem;
+  border-radius: var(--vs-radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.vs-admin .vs-btn:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.vs-admin .vs-btn-subtle {
+  box-shadow: none;
+}
+
+.vs-admin .vs-btn-subtle:hover {
+  box-shadow: none;
+}
+
+.vs-admin .vs-link {
+  font-size: 0.82rem;
+}
+
+.vs-admin .vs-input,
+.vs-admin .vs-textarea {
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--vs-radius-sm);
+  font-size: 0.875rem;
+}
+
+.vs-admin .vs-textarea {
+  min-height: 6rem;
+}
+
+.vs-admin label {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--vs-subtle);
+}
+
+.vs-admin .vs-copy {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.vs-admin .vs-meta {
+  font-size: 0.78rem;
+}
+
+.vs-admin .vs-stat-value {
+  font-size: 1.6rem;
+}
+
+.vs-admin .vs-stat-label {
+  font-size: 0.72rem;
+  margin-top: 0.35rem;
+}
+
+.vs-admin main .mt-10 {
+  margin-top: 1.75rem;
+}
+
+.vs-admin main .mt-8 {
+  margin-top: 1.5rem;
+}
+
+.vs-admin .space-y-6 > * + * {
+  margin-top: 1.1rem;
+}
+
+.vs-admin .space-y-4 > * + * {
+  margin-top: 0.75rem;
+}
+
+.vs-admin .gap-5 {
+  gap: 0.875rem;
+}
+
+.vs-admin .gap-4 {
+  gap: 0.75rem;
+}
+
+.vs-admin-nav-item {
+  display: block;
+  border-radius: var(--vs-radius-sm);
+  padding: 0.5rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--vs-muted);
+  transition: background-color 0.15s var(--vs-ease), color 0.15s var(--vs-ease);
+}
+
+.vs-admin-nav-item:hover {
+  background: var(--vs-surface-2);
+  color: var(--vs-ink);
+}
+
+.vs-admin-nav-item-active {
+  background: var(--vs-ink);
+  color: #ffffff;
+}
+
+.vs-admin-nav-item-active:hover {
+  background: var(--vs-ink);
+  color: #ffffff;
+}
+
 .prose-editor code {
   background: var(--vs-surface-2);
   border-radius: 4px;

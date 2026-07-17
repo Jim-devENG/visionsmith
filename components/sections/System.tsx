@@ -4,16 +4,16 @@ import { motion } from "framer-motion";
 
 const systemOutcomes = [
   {
-    title: "Name the line",
-    text: "State the principles, boundaries, and obligations that should still hold when convenience starts arguing.",
+    title: "Find the pattern",
+    text: "Look past the noise of a problem to the structure underneath it — the few things that actually govern how it behaves.",
   },
   {
-    title: "Build the cadence",
-    text: "Translate judgment into weekly review, recurring examination, and concrete commitments that survive mood shifts.",
+    title: "Build the architecture",
+    text: "Turn a clear idea into a structure that can hold weight: sequence, dependencies, and the order things need to happen in.",
   },
   {
-    title: "Inspect the evidence",
-    text: "Keep a visible record so promises are measured against conduct, correction, and completed work.",
+    title: "Build the thing",
+    text: "Move from architecture to construction with the pattern still intact, so what you ship still resembles what you meant.",
   },
 ];
 
@@ -28,9 +28,10 @@ export function System() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] as const }}
           className="max-w-[36rem]"
         >
-          <p className="vs-label mb-4">System value</p>
+          <p className="vs-label mb-4">The method</p>
           <h2 className="vs-title">
-            The platform helps turn private standards into repeatable conduct.
+            VisionSmith helps builders turn complexity into a repeatable way
+            of thinking.
           </h2>
         </motion.div>
 

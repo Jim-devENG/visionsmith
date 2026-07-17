@@ -36,7 +36,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <Reveal className="max-w-[42rem]">
             <p className="vs-label mb-6">
               <Link href="/blog" className="vs-link">
-                Writing
+                Field notes
               </Link>
             </p>
             <h1 className="vs-display">{post.title}</h1>
@@ -77,13 +77,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <section className="vs-section vs-section-accent">
         <div className="vs-wrap vs-section-inner-tight">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <p className="vs-title max-w-[35rem]">Read something. Now govern something.</p>
+            <p className="vs-title max-w-[35rem]">Read something. Now build something.</p>
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link href="/join" className="vs-btn vs-btn-on-accent">
-                Enter VisionSmith
+                Build with Clarity
               </Link>
               <Link href="/blog" className="vs-btn vs-btn-ghost-on-color">
-                More writing
+                More field notes
               </Link>
             </div>
           </div>

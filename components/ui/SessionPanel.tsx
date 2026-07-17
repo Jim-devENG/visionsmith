@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 
 const checklist = [
-  { label: "Standard defined", done: true },
-  { label: "Review scheduled", done: true },
-  { label: "Obligations made visible", done: true },
+  { label: "Pattern identified", done: true },
+  { label: "Architecture sketched", done: true },
+  { label: "Build sequence set", done: true },
 ];
 
 export function SessionPanel() {
@@ -55,7 +55,7 @@ export function SessionPanel() {
 
         <div>
           <div className="mb-2 flex items-center justify-between text-[12px] font-semibold text-[color:var(--vs-subtle)]">
-            <span>Drift correction</span>
+            <span>Pattern clarity</span>
             <span>72%</span>
           </div>
           <div className="h-2 w-full overflow-hidden rounded-full bg-[color:var(--vs-surface-2)]">
