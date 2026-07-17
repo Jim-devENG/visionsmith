@@ -22,9 +22,9 @@ export default async function FounderAdminPage({ searchParams }: FounderAdminPag
         <p className="vs-label mb-4">Founder Page</p>
         <h1 className="vs-title">Edit founder page</h1>
         <p className="vs-copy mt-3">
-          This text and photo appear on the public{" "}
-          <a href="/founder" target="_blank" rel="noreferrer" className="vs-link">
-            /founder
+          This text and photo appear in the Founder section on the public{" "}
+          <a href="/about#founder" target="_blank" rel="noreferrer" className="vs-link">
+            /about
           </a>{" "}
           page.
         </p>

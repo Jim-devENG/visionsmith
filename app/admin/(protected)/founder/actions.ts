@@ -22,6 +22,6 @@ export async function updateFounderPage(formData: FormData) {
     where id = 1
   `;
 
-  revalidatePath("/founder");
+  revalidatePath("/about");
   redirect("/admin/founder?success=1");
 }

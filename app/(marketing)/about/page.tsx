@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { sql } from "../../../lib/db";
 import { FrameRings } from "../../../components/ui/FrameRings";
 import { Reveal } from "../../../components/ui/Reveal";
+import { Stamp } from "../../../components/ui/Stamp";
 import { StrikeList } from "../../../components/ui/StrikeList";
 
 const refusals = [
@@ -30,7 +32,10 @@ const fit = [
   "People who do not need more content, but a place where thought, review, and execution answer to the same frame.",
 ];
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const rows = await sql`select name, photo_url, body_html from founder_page where id = 1`;
+  const founder = rows[0] as { name: string; photo_url: string | null; body_html: string };
+
   return (
     <main>
       <section className="vs-section vs-surface">
@@ -115,6 +120,39 @@ export default function AboutPage() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section id="founder" className="vs-section vs-tint">
+        <div className="vs-wrap vs-section-inner-tight">
+          <Reveal className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(16rem,0.9fr)] lg:items-center">
+            <div>
+              <p className="vs-label mb-6">Founder</p>
+              <h2 className="vs-title max-w-[32rem]">{founder.name}</h2>
+              {founder.body_html ? (
+                <div
+                  className="prose-editor mt-6 max-w-[34rem]"
+                  dangerouslySetInnerHTML={{ __html: founder.body_html }}
+                />
+              ) : (
+                <p className="vs-copy mt-6 max-w-[34rem]">
+                  The person behind the standard VisionSmith holds everyone to,
+                  starting with itself.
+                </p>
+              )}
+            </div>
+
+            {founder.photo_url ? (
+              <figure className="vs-media">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={founder.photo_url} alt={founder.name} className="aspect-[4/5]" />
+              </figure>
+            ) : (
+              <div className="vs-card flex items-center justify-center">
+                <Stamp label="Founder" />
+              </div>
+            )}
+          </Reveal>
         </div>
       </section>
 
