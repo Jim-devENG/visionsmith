@@ -5,11 +5,11 @@ import { sql } from "../../../lib/db";
 import { checkRateLimit, getClientIp } from "../../../lib/rate-limit";
 import { sendEventRegistrationConfirmation, sendNotificationEmail } from "../../../lib/email";
 
-function encodeError(message: string) {
-  return `/events?error=${encodeURIComponent(message)}#register`;
+function encodeError(basePath: string, message: string) {
+  return `${basePath}?error=${encodeURIComponent(message)}#register`;
 }
 
-export async function registerForEvent(eventId: string, formData: FormData) {
+export async function registerForEvent(eventId: string, basePath: string, formData: FormData) {
   const fullName = String(formData.get("full_name") ?? "")
     .replace(/\s+/g, " ")
     .trim();
@@ -19,22 +19,22 @@ export async function registerForEvent(eventId: string, formData: FormData) {
   const noteRaw = String(formData.get("note") ?? "").trim();
 
   if (!fullName || fullName.length < 2) {
-    redirect(encodeError("A full name is required."));
+    redirect(encodeError(basePath, "A full name is required."));
   }
 
   if (!email) {
-    redirect(encodeError("An email address is required."));
+    redirect(encodeError(basePath, "An email address is required."));
   }
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) {
-    redirect(encodeError("Enter a valid email address."));
+    redirect(encodeError(basePath, "Enter a valid email address."));
   }
 
   const ip = await getClientIp();
   const allowed = await checkRateLimit(`register:${ip}`, 10, 60 * 60);
   if (!allowed) {
-    redirect(encodeError("Too many attempts. Please try again later."));
+    redirect(encodeError(basePath, "Too many attempts. Please try again later."));
   }
 
   const eventRows = await sql`
@@ -52,7 +52,7 @@ export async function registerForEvent(eventId: string, formData: FormData) {
       }
     | undefined;
   if (!event) {
-    redirect(encodeError("This event is no longer available."));
+    redirect(encodeError(basePath, "This event is no longer available."));
   }
 
   const questions = event.custom_questions ?? [];
@@ -79,7 +79,7 @@ export async function registerForEvent(eventId: string, formData: FormData) {
   }
 
   if (errorMessage) {
-    redirect(encodeError(errorMessage));
+    redirect(encodeError(basePath, errorMessage));
   }
 
   const eventWhen = `${new Date(event.event_date).toLocaleDateString("en-US", {
@@ -109,5 +109,5 @@ export async function registerForEvent(eventId: string, formData: FormData) {
     redirectUrl: event.redirect_url,
   });
 
-  redirect("/events?registered=1#register");
+  redirect(`${basePath}?registered=1#register`);
 }

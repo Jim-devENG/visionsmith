@@ -6,8 +6,6 @@ import { EventTicket } from "../ui/EventTicket";
 import { Reveal } from "../ui/Reveal";
 import { ShareButtons } from "./ShareButtons";
 
-const EVENTS_URL = "https://www.visionsmith.world/events#register";
-
 const rhythm = [
   {
     title: "Monthly live sessions",
@@ -25,6 +23,7 @@ const rhythm = [
 
 export type FeaturedEvent = {
   id: string;
+  slug: string;
   title: string;
   framing: string;
   date: string;
@@ -36,6 +35,12 @@ export type FeaturedEvent = {
   flyerUrl: string | null;
   redirectLabel: string | null;
   redirectUrl: string | null;
+  status: string;
+};
+
+export type PastSession = {
+  label: string;
+  slug: string;
 };
 
 export function EventsAnimated({
@@ -46,11 +51,15 @@ export function EventsAnimated({
   registered,
 }: {
   featured: FeaturedEvent | null;
-  pastSessions: string[];
+  pastSessions: PastSession[];
   registerAction: ((formData: FormData) => void) | null;
   error?: string;
   registered?: boolean;
 }) {
+  const isPast = featured?.status === "past";
+  const eventUrl = featured
+    ? `https://www.visionsmith.world/events/${featured.slug}#register`
+    : "https://www.visionsmith.world/events";
   return (
     <main>
       <section className="vs-section vs-surface">
@@ -82,7 +91,7 @@ export function EventsAnimated({
       <section id="register" className="vs-section vs-tint">
         <div className="vs-wrap vs-section-inner-tight">
           <Reveal>
-            <p className="vs-label mb-8">Current / next</p>
+            <p className="vs-label mb-8">{isPast ? "Past session" : "Current / next"}</p>
             {featured ? (
               <div className="vs-card vs-card-accent-top grid gap-12 lg:grid-cols-[minmax(0,1.35fr)_minmax(15rem,0.65fr)]">
                 <div>
@@ -92,15 +101,19 @@ export function EventsAnimated({
                       <img src={featured.flyerUrl} alt={`${featured.title} flyer`} />
                     </div>
                   ) : null}
-                  <p className="vs-label vs-label-alt mb-5">Next live session</p>
+                  <p className="vs-label vs-label-alt mb-5">
+                    {isPast ? "This session has happened" : "Next live session"}
+                  </p>
                   <h2 className="vs-title max-w-[36rem]">{featured.title}</h2>
                   <p className="vs-copy mt-6 max-w-[38rem]">{featured.framing}</p>
-                  <p className="vs-copy mt-6 max-w-[38rem]">
-                    To join the session while it's active, your entry into
-                    the platform needs to be established first.
-                  </p>
+                  {!isPast ? (
+                    <p className="vs-copy mt-6 max-w-[38rem]">
+                      To join the session while it's active, your entry into
+                      the platform needs to be established first.
+                    </p>
+                  ) : null}
                   <div className="mt-8">
-                    <ShareButtons url={EVENTS_URL} title={featured.title} />
+                    <ShareButtons url={eventUrl} title={featured.title} />
                   </div>
                 </div>
                 <aside className="space-y-6 lg:border-l lg:border-[color:var(--vs-line)] lg:pl-8">
@@ -158,6 +171,8 @@ export function EventsAnimated({
                         Reserve Your Seat
                       </button>
                     </form>
+                  ) : isPast ? (
+                    <p className="vs-meta">This session has already happened.</p>
                   ) : null}
 
                   <Link href="/join" className="vs-btn vs-btn-subtle w-full">
@@ -235,7 +250,7 @@ export function EventsAnimated({
               <div className="grid gap-4 sm:grid-cols-2">
                 {pastSessions.map((session, index) => (
                   <motion.div
-                    key={session}
+                    key={session.slug}
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -245,7 +260,9 @@ export function EventsAnimated({
                     <span className="vs-icon-badge vs-icon-badge-on-accent !h-8 !w-8 text-[11px]">
                       &#10003;
                     </span>
-                    <p className="vs-copy pt-1 text-[0.9rem]">{session}</p>
+                    <Link href={`/events/${session.slug}`} className="vs-copy pt-1 text-[0.9rem] hover:underline">
+                      {session.label}
+                    </Link>
                   </motion.div>
                 ))}
               </div>
@@ -262,7 +279,7 @@ export function EventsAnimated({
                 entry leads.
               </p>
               <div className="flex flex-col gap-4">
-                {featured ? (
+                {featured && !isPast ? (
                   <Link href="#register" className="vs-btn vs-btn-on-accent">
                     {featured.actionLabel}
                   </Link>
