@@ -109,7 +109,7 @@ export function RichTextEditor({
 
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({ link: false }),
       TiptapImage,
       TiptapLink.configure({ openOnClick: false, autolink: true }),
     ],

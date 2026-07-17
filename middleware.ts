@@ -24,8 +24,9 @@ export async function middleware(request: NextRequest) {
   let pathname = url.pathname;
 
   // admin.visionsmith.world/events -> internally /admin/events, so admin
-  // pages don't need a visible /admin prefix on their own subdomain.
-  if (isAdminHost && !pathname.startsWith("/admin")) {
+  // pages don't need a visible /admin prefix on their own subdomain. API
+  // routes are left untouched so fetch("/api/upload") etc. keep resolving.
+  if (isAdminHost && !pathname.startsWith("/admin") && !pathname.startsWith("/api")) {
     pathname = pathname === "/" ? "/admin" : `/admin${pathname}`;
   }
 
