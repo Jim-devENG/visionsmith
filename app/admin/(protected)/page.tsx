@@ -44,6 +44,9 @@ export default async function AdminDashboardPage() {
         <Link href="/admin/social-links" className="vs-btn vs-btn-subtle">
           Manage social links
         </Link>
+        <Link href="/admin/apply" className="vs-btn vs-btn-subtle">
+          Strategic Session (private)
+        </Link>
       </div>
     </AdminShell>
   );

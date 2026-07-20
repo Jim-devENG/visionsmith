@@ -95,6 +95,53 @@ create table if not exists site_settings (
 );
 insert into site_settings (id) values (1) on conflict (id) do nothing;
 
+-- ── Strategic session (single private campaign page, not a listed entity) ──
+create table if not exists strategic_sessions (
+  id integer primary key default 1 check (id = 1),
+  slug text not null unique default 'strategic-architecture-session',
+  status text not null default 'draft' check (status in ('draft', 'open', 'closed')),
+  hero_title text not null default 'Strategic Architecture Session',
+  hero_subtitle text not null default 'Transform complexity into clarity.',
+  hero_description text not null default 'A private one-on-one strategic thinking session for builders navigating complexity.',
+  hero_image_url text,
+  host_name text not null default 'Jimmydebillionaire',
+  host_title text not null default 'Strategic Architect',
+  session_start_date date,
+  max_slots integer not null default 10,
+  price_label text not null default 'Free',
+  cta_label text not null default 'Request My Session',
+  benefits jsonb not null default '["Greater clarity", "A strategic roadmap", "Prioritised next steps", "Better decision-making", "A practical execution plan", "Clearer thinking"]',
+  target_audience jsonb not null default '["Have an idea but no clear direction", "Are overwhelmed by too many possibilities", "Are building a business", "Are launching a ministry", "Are creating a product", "Are growing a personal brand", "Are navigating a career transition", "Need strategic clarity before taking action"]',
+  success_heading text not null default 'Your Request Has Been Received',
+  success_message text not null default 'Thank you for taking the time to complete your application. Every request is reviewed carefully because each session is intentionally limited. If selected, you''ll receive an email with the next steps.',
+  seo_title text,
+  seo_description text,
+  updated_at timestamptz not null default now()
+);
+insert into strategic_sessions (id) values (1) on conflict (id) do nothing;
+
+create table if not exists strategic_session_applications (
+  id uuid primary key default gen_random_uuid(),
+  session_id integer not null references strategic_sessions(id) on delete cascade,
+  full_name text not null,
+  email text not null,
+  whatsapp text not null,
+  country text not null,
+  linkedin text,
+  category text not null,
+  building_description text not null,
+  biggest_challenge text not null,
+  situation text not null,
+  one_thing text not null,
+  why_stuck text not null,
+  success_outcome text not null,
+  commitment text not null,
+  why_selected text not null,
+  status text not null default 'new' check (status in ('new', 'reviewed', 'selected', 'declined')),
+  created_at timestamptz not null default now()
+);
+create index if not exists strategic_session_applications_created_idx on strategic_session_applications (created_at desc);
+
 -- ── Participants (replaces the broken Supabase-backed join flow) ──
 create table if not exists participants (
   id uuid primary key default gen_random_uuid(),
