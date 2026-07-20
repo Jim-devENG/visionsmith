@@ -13,12 +13,19 @@ const footerLinks = [
 ];
 
 export async function MarketingFooter() {
-  const socialLinks = (await sql`
-    select platform, label, url
-    from social_links
-    where is_visible = true
-    order by sort_order asc
-  `) as { platform: string; label: string; url: string }[];
+  const [socialLinksRows, settingsRows] = await Promise.all([
+    sql`
+      select platform, label, url
+      from social_links
+      where is_visible = true
+      order by sort_order asc
+    `,
+    sql`select contact_email from site_settings where id = 1`,
+  ]);
+
+  const socialLinks = socialLinksRows as { platform: string; label: string; url: string }[];
+  const contactEmail = (settingsRows[0] as { contact_email: string } | undefined)?.contact_email
+    ?? "entry@visionsmith.world";
 
   return (
     <footer className="vs-section-dark relative overflow-hidden">
@@ -63,10 +70,10 @@ export async function MarketingFooter() {
           <div>
             <p className="vs-label vs-label-on-dark mb-6">Connect</p>
             <a
-              href="mailto:entry@visionsmith.co"
+              href={`mailto:${contactEmail}`}
               className="vs-link text-[14px] font-medium text-white/70"
             >
-              entry@visionsmith.co
+              {contactEmail}
             </a>
 
             {socialLinks.length > 0 ? (

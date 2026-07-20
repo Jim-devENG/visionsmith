@@ -11,6 +11,7 @@ const navItems = [
   { href: "/admin/participants", label: "Participants" },
   { href: "/admin/social-links", label: "Social Links" },
   { href: "/admin/founder", label: "Founder Page" },
+  { href: "/admin/settings", label: "Settings" },
   { href: "/admin/account", label: "Account" },
 ];
 

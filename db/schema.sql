@@ -87,6 +87,14 @@ create table if not exists founder_page (
 );
 insert into founder_page (id) values (1) on conflict (id) do nothing;
 
+-- ── Site settings (single row) ──────────────────────────
+create table if not exists site_settings (
+  id integer primary key default 1 check (id = 1),
+  contact_email text not null default 'entry@visionsmith.world',
+  updated_at timestamptz not null default now()
+);
+insert into site_settings (id) values (1) on conflict (id) do nothing;
+
 -- ── Participants (replaces the broken Supabase-backed join flow) ──
 create table if not exists participants (
   id uuid primary key default gen_random_uuid(),
