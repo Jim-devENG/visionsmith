@@ -91,3 +91,32 @@ export async function sendEventRegistrationConfirmation({
 
   await send({ to, subject: `You're registered: ${eventTitle}`, html });
 }
+
+/**
+ * Confirmation email sent to someone who just applied for a private
+ * VisionSmith session (e.g. the Strategic Architecture Session). Applicants
+ * aren't auto-approved — this just confirms the request was received.
+ */
+export async function sendApplicationConfirmation({
+  to,
+  fullName,
+  sessionTitle,
+}: {
+  to: string;
+  fullName: string;
+  sessionTitle: string;
+}) {
+  const html = `
+    <div style="font-family:sans-serif;max-width:32rem;margin:0 auto;">
+      <h2 style="color:#17140f;">Your request has been received.</h2>
+      <p style="color:#17140f;">Hi ${escapeHtml(fullName)}, thank you for applying for:</p>
+      <p style="color:#17140f;font-weight:700;font-size:18px;margin:8px 0;">${escapeHtml(sessionTitle)}</p>
+      <p style="color:#6b6459;">
+        Every request is reviewed carefully. If you're selected, you'll be
+        contacted directly with next steps.
+      </p>
+    </div>
+  `;
+
+  await send({ to, subject: `Request received: ${sessionTitle}`, html });
+}

@@ -174,6 +174,7 @@ export default async function StrategicSessionPage({ params }: { params: Promise
           <ApplicationForm
             sessionId={session.id}
             sessionSlug={session.slug}
+            sessionTitle={session.hero_title}
             ctaLabel={session.cta_label}
             successHeading={session.success_heading}
             successMessage={session.success_message}

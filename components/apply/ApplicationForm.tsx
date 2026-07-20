@@ -57,6 +57,7 @@ function stepIsValid(step: number, data: ApplicationPayload) {
 export function ApplicationForm({
   sessionId,
   sessionSlug,
+  sessionTitle,
   ctaLabel,
   successHeading,
   successMessage,
@@ -64,6 +65,7 @@ export function ApplicationForm({
 }: {
   sessionId: number;
   sessionSlug: string;
+  sessionTitle: string;
   ctaLabel: string;
   successHeading: string;
   successMessage: string;
@@ -105,7 +107,7 @@ export function ApplicationForm({
   async function handleSubmit() {
     setSubmitting(true);
     setError(null);
-    const result = await submitApplication(sessionId, sessionSlug, data);
+    const result = await submitApplication(sessionId, sessionSlug, sessionTitle, data);
     setSubmitting(false);
     if ("error" in result) {
       setError(result.error);

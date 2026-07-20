@@ -3,7 +3,7 @@
 import { sql } from "../../../lib/db";
 import { checkRateLimit, getClientIp } from "../../../lib/rate-limit";
 import { isSafeHttpUrl } from "../../../lib/sanitize";
-import { sendNotificationEmail } from "../../../lib/email";
+import { sendApplicationConfirmation, sendNotificationEmail } from "../../../lib/email";
 
 export type ApplicationPayload = {
   fullName: string;
@@ -31,6 +31,7 @@ function required(value: string, max = 2000) {
 export async function submitApplication(
   sessionId: number,
   sessionSlug: string,
+  sessionTitle: string,
   payload: ApplicationPayload
 ): Promise<{ error: string } | { success: true }> {
   const fullName = required(payload.fullName, 120);
@@ -83,6 +84,15 @@ export async function submitApplication(
     return { error: "Your request could not be recorded. Please try once more." };
   }
 
+  // Add them to the general contact list too, so admins have one place to
+  // see everyone who's engaged with VisionSmith. Ignore if they're already
+  // on it (e.g. from the Join form) — don't overwrite their existing entry.
+  await sql`
+    insert into participants (full_name, email, intention, source)
+    values (${fullName}, ${email}, ${`Applied: ${sessionTitle}`}, 'strategic_session')
+    on conflict (email) do nothing
+  `;
+
   await sendNotificationEmail({
     subject: `New Strategic Architecture Session request: ${fullName}`,
     lines: [
@@ -102,6 +112,12 @@ export async function submitApplication(
       ["Commitment", commitment],
       ["Why selected", whySelected],
     ],
+  });
+
+  await sendApplicationConfirmation({
+    to: email,
+    fullName,
+    sessionTitle,
   });
 
   return { success: true };
