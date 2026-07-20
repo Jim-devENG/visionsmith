@@ -14,14 +14,14 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
     sql`
       select id, slug, title, framing, event_date, event_time, action_label, custom_questions, flyer_url, redirect_label, redirect_url, status
       from events
-      where is_featured = true and status = 'upcoming'
+      where is_featured = true and status != 'past' and event_date >= current_date
       order by event_date asc
       limit 1
     `,
     sql`
       select title, slug, event_date
       from events
-      where status = 'past'
+      where status = 'past' or event_date < current_date
       order by event_date desc
       limit 6
     `,
@@ -38,7 +38,8 @@ export default async function EventsPage({ searchParams }: EventsPageProps) {
     return { label: `${month}: ${r.title}`, slug: r.slug };
   });
 
-  const registerAction = featured ? registerForEvent.bind(null, featured.id, "/events") : null;
+  const registerAction =
+    featured && featured.status === "upcoming" ? registerForEvent.bind(null, featured.id, "/events") : null;
 
   return (
     <EventsAnimated

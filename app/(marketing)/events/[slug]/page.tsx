@@ -22,7 +22,7 @@ export default async function EventDetailPage({ params, searchParams }: EventDet
     sql`
       select title, slug, event_date
       from events
-      where status = 'past'
+      where status = 'past' or event_date < current_date
       order by event_date desc
       limit 6
     `,

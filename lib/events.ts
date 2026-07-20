@@ -30,7 +30,18 @@ export type EventRow = {
   status: string;
 };
 
+/** An event counts as past once its date has elapsed, regardless of the
+ * stored status — admins don't have to remember to flip it manually. The
+ * stored status can still force an event into the past bucket early. */
+export function isEventElapsed(eventDate: string) {
+  const today = new Date();
+  today.setUTCHours(0, 0, 0, 0);
+  return new Date(eventDate) < today;
+}
+
 export function toFeaturedEvent(row: EventRow): FeaturedEvent {
+  const derivedStatus = row.status === "past" || isEventElapsed(row.event_date) ? "past" : "upcoming";
+
   return {
     id: row.id,
     slug: row.slug,
@@ -53,6 +64,6 @@ export function toFeaturedEvent(row: EventRow): FeaturedEvent {
     flyerUrl: row.flyer_url,
     redirectLabel: row.redirect_label,
     redirectUrl: row.redirect_url,
-    status: row.status,
+    status: derivedStatus,
   };
 }
