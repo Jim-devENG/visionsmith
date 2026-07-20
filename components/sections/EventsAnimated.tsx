@@ -41,6 +41,7 @@ export type FeaturedEvent = {
 export type PastSession = {
   label: string;
   slug: string;
+  flyerUrl: string | null;
 };
 
 export function EventsAnimated({
@@ -255,13 +256,30 @@ export function EventsAnimated({
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.08 }}
-                    className="vs-card vs-card-on-accent vs-card-accent-top flex items-start gap-3"
                   >
-                    <span className="vs-icon-badge vs-icon-badge-on-accent !h-8 !w-8 text-[11px]">
-                      &#10003;
-                    </span>
-                    <Link href={`/events/${session.slug}`} className="vs-copy pt-1 text-[0.9rem] hover:underline">
-                      {session.label}
+                    <Link
+                      href={`/events/${session.slug}`}
+                      className="vs-card vs-card-on-accent group relative block aspect-[4/3] overflow-hidden !p-0"
+                    >
+                      {session.flyerUrl ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={session.flyerUrl}
+                          alt=""
+                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center bg-white/10">
+                          <span className="vs-icon-badge vs-icon-badge-on-accent">&#10003;</span>
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                      <span className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full bg-white/90 text-[11px] font-bold text-[color:var(--vs-ink)]">
+                        &#10003;
+                      </span>
+                      <p className="absolute inset-x-0 bottom-0 p-4 text-[0.9rem] font-medium text-white group-hover:underline">
+                        {session.label}
+                      </p>
                     </Link>
                   </motion.div>
                 ))}

@@ -20,7 +20,7 @@ export default async function EventDetailPage({ params, searchParams }: EventDet
       where slug = ${slug}
     `,
     sql`
-      select title, slug, event_date
+      select title, slug, event_date, flyer_url
       from events
       where status = 'past' or event_date < current_date
       order by event_date desc
@@ -33,12 +33,14 @@ export default async function EventDetailPage({ params, searchParams }: EventDet
 
   const featured = toFeaturedEvent(row);
 
-  const pastSessions = (pastRows as { title: string; slug: string; event_date: string }[]).map((r) => {
+  const pastSessions = (
+    pastRows as { title: string; slug: string; event_date: string; flyer_url: string | null }[]
+  ).map((r) => {
     const month = new Date(r.event_date).toLocaleDateString("en-US", {
       month: "long",
       timeZone: "UTC",
     });
-    return { label: `${month}: ${r.title}`, slug: r.slug };
+    return { label: `${month}: ${r.title}`, slug: r.slug, flyerUrl: r.flyer_url };
   });
 
   const registerAction =
