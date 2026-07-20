@@ -53,7 +53,7 @@ export default async function ApplyAdminPage({ searchParams }: ApplyAdminPagePro
         <p className="vs-copy mt-3">
           This page is not linked from any public navigation. Share it directly:{" "}
           <a
-            href={`/apply/${session.slug}`}
+            href={`https://www.visionsmith.world/apply/${session.slug}`}
             target="_blank"
             rel="noreferrer"
             className="vs-link"

@@ -47,7 +47,7 @@ export default async function AdminBlogPage() {
               </div>
               <div className="flex items-center gap-5">
                 {post.is_published ? (
-                  <a href={`/blog/${post.slug}`} target="_blank" rel="noreferrer" className="vs-link">
+                  <a href={`https://www.visionsmith.world/blog/${post.slug}`} target="_blank" rel="noreferrer" className="vs-link">
                     View
                   </a>
                 ) : null}

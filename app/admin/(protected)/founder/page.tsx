@@ -23,7 +23,7 @@ export default async function FounderAdminPage({ searchParams }: FounderAdminPag
         <h1 className="vs-title">Edit founder page</h1>
         <p className="vs-copy mt-3">
           This text and photo appear in the Founder section on the public{" "}
-          <a href="/about#founder" target="_blank" rel="noreferrer" className="vs-link">
+          <a href="https://www.visionsmith.world/about#founder" target="_blank" rel="noreferrer" className="vs-link">
             /about
           </a>{" "}
           page.
