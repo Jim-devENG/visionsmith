@@ -148,7 +148,6 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
                   <div className="p-6">
                     <p className="vs-meta">{formatMeta(post)}</p>
                     <h2 className="vs-subtitle mt-3">{post.title}</h2>
-                    {post.excerpt ? <p className="vs-copy mt-3">{post.excerpt}</p> : null}
                   </div>
                 </Link>
               ))}
