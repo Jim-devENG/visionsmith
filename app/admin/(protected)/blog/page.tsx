@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { sql } from "../../../../lib/db";
 import { AdminShell } from "../../../../components/admin/AdminShell";
+import { BlogModeTabs } from "../../../../components/admin/BlogModeTabs";
 import { ConfirmDeleteButton } from "../../../../components/admin/ConfirmDeleteButton";
 import { deletePost } from "./actions";
 
@@ -8,22 +9,27 @@ export default async function AdminBlogPage() {
   const posts = await sql`
     select id, title, slug, is_published, published_at, updated_at
     from blog_posts
+    where source = 'manual'
     order by updated_at desc
   `;
 
   return (
     <AdminShell>
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="vs-label mb-4">Blog</p>
-          <h1 className="vs-title">Manage posts</h1>
-        </div>
+      <p className="vs-label mb-4">Blog</p>
+      <h1 className="vs-title">Manage posts</h1>
+      <p className="vs-copy mt-3 max-w-[38rem]">
+        Manually written posts. Essays synced automatically from Substack live under the
+        Substack Sync tab.
+      </p>
+
+      <div className="mt-8 flex items-center justify-between">
+        <BlogModeTabs active="manual" />
         <Link href="/admin/blog/new" className="vs-btn">
           New post
         </Link>
       </div>
 
-      <div className="mt-10 space-y-4">
+      <div className="mt-8 space-y-4">
         {posts.length === 0 ? (
           <p className="vs-copy">No posts yet. Write the first one.</p>
         ) : (

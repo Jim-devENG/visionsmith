@@ -4,7 +4,8 @@ export function sanitizeRichText(html: string) {
   return sanitizeHtml(html, {
     allowedTags: [
       "p", "br", "strong", "em", "u", "s", "blockquote",
-      "h2", "h3", "ul", "ol", "li", "a", "img",
+      "h1", "h2", "h3", "h4", "ul", "ol", "li", "a", "img",
+      "hr", "pre", "code", "figure", "figcaption",
     ],
     allowedAttributes: {
       a: ["href", "target", "rel"],

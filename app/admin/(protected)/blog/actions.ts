@@ -82,3 +82,43 @@ export async function deletePost(id: string) {
   revalidatePath("/blog");
   redirect("/admin/blog");
 }
+
+export async function deleteSyncedPost(id: string) {
+  await sql`delete from blog_posts where id = ${id}`;
+  revalidatePath("/blog");
+  redirect("/admin/blog/sync");
+}
+
+export async function updateBlogSyncSettings(formData: FormData) {
+  const rssFeedUrl = String(formData.get("rss_feed_url") ?? "").trim();
+  const autoSyncEnabled = formData.get("auto_sync_enabled") === "on";
+
+  if (rssFeedUrl && !isSafeHttpUrl(rssFeedUrl)) {
+    redirect("/admin/blog/sync?error=" + encodeURIComponent("RSS feed URL must start with http:// or https://"));
+  }
+
+  await sql`
+    update blog_sync_settings set
+      rss_feed_url = ${rssFeedUrl || null},
+      auto_sync_enabled = ${autoSyncEnabled},
+      updated_at = now()
+    where id = 1
+  `;
+
+  redirect("/admin/blog/sync?success=1");
+}
+
+export async function triggerBlogSync() {
+  const { runBlogSync } = await import("../../../../lib/blog-sync");
+  const result = await runBlogSync({ force: true });
+
+  revalidatePath("/blog");
+  revalidatePath("/");
+  revalidatePath("/admin/blog/sync");
+
+  if (!result.ok) {
+    redirect("/admin/blog/sync?syncError=" + encodeURIComponent(result.errors[0] ?? "Sync failed."));
+  }
+
+  redirect(`/admin/blog/sync?synced=1&imported=${result.imported}&updated=${result.updated}`);
+}

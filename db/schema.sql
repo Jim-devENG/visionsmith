@@ -62,10 +62,43 @@ create table if not exists blog_posts (
   excerpt text,
   is_published boolean not null default false,
   published_at timestamptz,
+  source text not null default 'manual' check (source in ('manual', 'substack')),
+  substack_guid text unique,
+  substack_url text,
+  author text,
+  reading_time_minutes integer,
+  tags jsonb not null default '[]',
+  category text,
+  seo_title text,
+  seo_description text,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
 create index if not exists blog_posts_published_idx on blog_posts (is_published, published_at desc);
+alter table blog_posts add column if not exists source text not null default 'manual';
+alter table blog_posts add column if not exists substack_guid text unique;
+alter table blog_posts add column if not exists substack_url text;
+alter table blog_posts add column if not exists author text;
+alter table blog_posts add column if not exists reading_time_minutes integer;
+alter table blog_posts add column if not exists tags jsonb not null default '[]';
+alter table blog_posts add column if not exists category text;
+alter table blog_posts add column if not exists seo_title text;
+alter table blog_posts add column if not exists seo_description text;
+
+-- ── Blog sync (Substack RSS import) ─────────────────────
+create table if not exists blog_sync_settings (
+  id integer primary key default 1 check (id = 1),
+  provider text not null default 'substack',
+  rss_feed_url text,
+  auto_sync_enabled boolean not null default true,
+  last_synced_at timestamptz,
+  last_sync_status text not null default 'never' check (last_sync_status in ('never', 'success', 'error')),
+  last_sync_error text,
+  last_sync_imported_count integer not null default 0,
+  last_sync_updated_count integer not null default 0,
+  updated_at timestamptz not null default now()
+);
+insert into blog_sync_settings (id) values (1) on conflict (id) do nothing;
 
 -- ── Social links ────────────────────────────────────────
 create table if not exists social_links (

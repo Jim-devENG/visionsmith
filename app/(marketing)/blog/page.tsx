@@ -10,6 +10,9 @@ type Post = {
   cover_image_url: string | null;
   excerpt: string | null;
   published_at: string;
+  author: string | null;
+  reading_time_minutes: number | null;
+  category: string | null;
 };
 
 function formatDate(value: string) {
@@ -20,14 +23,38 @@ function formatDate(value: string) {
   });
 }
 
-export default async function BlogIndexPage() {
-  const posts = (await sql`
-    select title, slug, cover_image_url, excerpt, published_at
-    from blog_posts
-    where is_published = true
-    order by published_at desc
-  `) as Post[];
+function formatMeta(post: Post) {
+  const parts = [formatDate(post.published_at)];
+  if (post.author) parts.push(post.author);
+  if (post.reading_time_minutes) parts.push(`${post.reading_time_minutes} min read`);
+  return parts.join(" · ");
+}
 
+type BlogIndexPageProps = {
+  searchParams?: Promise<{ category?: string }>;
+};
+
+export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps) {
+  const sp = searchParams ? await searchParams : undefined;
+  const activeCategory = sp?.category;
+
+  const [allPostsRows, categoryRows] = await Promise.all([
+    sql`
+      select title, slug, cover_image_url, excerpt, published_at, author, reading_time_minutes, category
+      from blog_posts
+      where is_published = true
+      order by published_at desc
+    `,
+    sql`
+      select distinct category from blog_posts
+      where is_published = true and category is not null
+      order by category asc
+    `,
+  ]);
+
+  const allPosts = allPostsRows as Post[];
+  const categories = (categoryRows as { category: string }[]).map((r) => r.category);
+  const posts = activeCategory ? allPosts.filter((p) => p.category === activeCategory) : allPosts;
   const [featured, ...rest] = posts;
 
   return (
@@ -41,6 +68,34 @@ export default async function BlogIndexPage() {
               Short pieces on pattern, structure, and the discipline of
               thinking clearly before you build.
             </p>
+
+            {categories.length > 0 ? (
+              <div className="mt-8 flex flex-wrap gap-2">
+                <Link
+                  href="/blog"
+                  className={`rounded-[var(--vs-radius-pill)] border px-3.5 py-1.5 text-[12px] font-semibold transition-colors ${
+                    !activeCategory
+                      ? "border-[color:var(--vs-ink)] bg-[color:var(--vs-ink)] text-white"
+                      : "border-[color:var(--vs-line-strong)] text-[color:var(--vs-ink-soft)] hover:border-[color:var(--vs-accent)]"
+                  }`}
+                >
+                  All
+                </Link>
+                {categories.map((category) => (
+                  <Link
+                    key={category}
+                    href={`/blog?category=${encodeURIComponent(category)}`}
+                    className={`rounded-[var(--vs-radius-pill)] border px-3.5 py-1.5 text-[12px] font-semibold transition-colors ${
+                      activeCategory === category
+                        ? "border-[color:var(--vs-ink)] bg-[color:var(--vs-ink)] text-white"
+                        : "border-[color:var(--vs-line-strong)] text-[color:var(--vs-ink-soft)] hover:border-[color:var(--vs-accent)]"
+                    }`}
+                  >
+                    {category}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
           </Reveal>
         </div>
       </section>
@@ -63,7 +118,7 @@ export default async function BlogIndexPage() {
                   <div className="hidden bg-[color:var(--vs-surface-2)] lg:block" />
                 )}
                 <div className="flex flex-col justify-center p-8 lg:p-10">
-                  <p className="vs-meta">{formatDate(featured.published_at)}</p>
+                  <p className="vs-meta">{formatMeta(featured)}</p>
                   <h2 className="vs-title mt-4">{featured.title}</h2>
                   {featured.excerpt ? <p className="vs-copy mt-4">{featured.excerpt}</p> : null}
                   <span className="vs-link mt-6 inline-block w-fit">Read the piece</span>
@@ -91,7 +146,7 @@ export default async function BlogIndexPage() {
                     </figure>
                   ) : null}
                   <div className="p-6">
-                    <p className="vs-meta">{formatDate(post.published_at)}</p>
+                    <p className="vs-meta">{formatMeta(post)}</p>
                     <h2 className="vs-subtitle mt-3">{post.title}</h2>
                     {post.excerpt ? <p className="vs-copy mt-3">{post.excerpt}</p> : null}
                   </div>
