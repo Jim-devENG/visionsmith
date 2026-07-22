@@ -21,7 +21,7 @@ export default async function MarketingPage() {
       from blog_posts
       where is_published = true
       order by published_at desc
-      limit 1
+      limit 4
     `,
   ]);
 
@@ -43,23 +43,22 @@ export default async function MarketingPage() {
       }
     : null;
 
-  const postRow = postRows[0] as
-    | { slug: string; title: string; excerpt: string | null; cover_image_url: string | null; published_at: string }
-    | undefined;
+  const posts = (
+    postRows as { slug: string; title: string; excerpt: string | null; cover_image_url: string | null; published_at: string }[]
+  ).map((row) => ({
+    slug: row.slug,
+    title: row.title,
+    excerpt: row.excerpt,
+    coverImageUrl: row.cover_image_url,
+    publishedAt: new Date(row.published_at).toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    }),
+  }));
 
-  const post: SpotlightPost | null = postRow
-    ? {
-        slug: postRow.slug,
-        title: postRow.title,
-        excerpt: postRow.excerpt,
-        coverImageUrl: postRow.cover_image_url,
-        publishedAt: new Date(postRow.published_at).toLocaleDateString("en-US", {
-          month: "long",
-          day: "numeric",
-          year: "numeric",
-        }),
-      }
-    : null;
+  const post: SpotlightPost | null = posts[0] ?? null;
+  const morePosts: SpotlightPost[] = posts.slice(1);
 
   return (
     <main>
@@ -68,7 +67,7 @@ export default async function MarketingPage() {
       <Positioning />
       <System />
       <CurrentFocus />
-      <Spotlight event={event} post={post} />
+      <Spotlight event={event} post={post} morePosts={morePosts} />
       <NextStep />
     </main>
   );

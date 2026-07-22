@@ -82,12 +82,60 @@ function Poster({
   );
 }
 
+function CompactPostCard({
+  href,
+  title,
+  meta,
+  imageUrl,
+  delay,
+}: {
+  href: string;
+  title: string;
+  meta: string;
+  imageUrl: string | null;
+  delay: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <Link href={href} className="group block">
+        <div className="aspect-[16/10] overflow-hidden rounded-[var(--vs-radius)] border border-[color:var(--vs-line)] bg-[color:var(--vs-surface-2)]">
+          {imageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={imageUrl}
+              alt=""
+              className="h-full w-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+            />
+          ) : (
+            <div className="flex h-full items-center justify-center">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.08em] text-[color:var(--vs-subtle)]">
+                Field notes
+              </span>
+            </div>
+          )}
+        </div>
+        <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.06em] text-[color:var(--vs-subtle)]">{meta}</p>
+        <h4 className="mt-1 text-[1rem] font-bold leading-snug text-[color:var(--vs-ink)] transition-colors group-hover:text-[color:var(--vs-accent)]">
+          {title}
+        </h4>
+      </Link>
+    </motion.div>
+  );
+}
+
 export function Spotlight({
   event,
   post,
+  morePosts,
 }: {
   event: SpotlightEvent | null;
   post: SpotlightPost | null;
+  morePosts: SpotlightPost[];
 }) {
   if (!event && !post) return null;
 
@@ -129,6 +177,32 @@ export function Spotlight({
             />
           ) : null}
         </div>
+
+        {morePosts.length > 0 ? (
+          <div className="mt-14">
+            <div className="mb-6 flex items-center gap-5">
+              <p className="shrink-0 text-[12px] font-semibold uppercase tracking-[0.08em] text-[color:var(--vs-subtle)]">
+                More from the blog
+              </p>
+              <div className="h-px flex-1 bg-[color:var(--vs-line)]" />
+              <Link href="/blog" className="vs-link shrink-0 text-[13px]">
+                View all
+              </Link>
+            </div>
+            <div className="grid gap-x-6 gap-y-8 sm:grid-cols-3">
+              {morePosts.map((p, index) => (
+                <CompactPostCard
+                  key={p.slug}
+                  href={`/blog/${p.slug}`}
+                  title={p.title}
+                  meta={p.publishedAt}
+                  imageUrl={p.coverImageUrl}
+                  delay={index * 0.08}
+                />
+              ))}
+            </div>
+          </div>
+        ) : null}
       </div>
     </section>
   );
